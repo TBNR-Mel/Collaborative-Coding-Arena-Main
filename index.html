@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Arena</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 flex flex-col h-screen">
+    <div class="flex flex-row flex-grow">
+        <!-- Code Editor Section -->
+        <div class="w-1/2 p-4">
+            <h2 class="text-2xl font-bold mb-4">Code Editor</h2>
+            <div class="mb-4">
+                <label for="languageSelect" class="mr-2">Select Language:</label>
+                <select id="languageSelect" class="border p-2 rounded">
+                    <option value="javascript">JavaScript</option>
+                    <option value="python">Python</option>
+                    <option value="java">Java</option>
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                </select>
+            </div>
+            <div id="editor" class="w-full h-[75vh] border border-gray-300"></div>
+            <button id="submitCode" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Submit Code</button>
+        </div>
+        <!-- Challenge Section -->
+        <div class="w-1/2 p-4 bg-white shadow-md">
+            <h2 class="text-2xl font-bold mb-4">Challenge</h2>
+            <div id="challengeInfo" class="mb-4">
+                <h3 id="challengeTitle" class="text-xl font-semibold"></h3>
+                <p id="challengeDescription" class="mt-2"></p>
+                <p id="timeRemaining" class="mt-2 font-bold text-red-500"></p>
+            </div>
+            <div id="testResults" class="mt-4"></div>
+            <div class="mt-4 flex space-x-2">
+                <button id="backChallenge" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Back</button>
+                <button id="nextChallenge" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Next Challenge</button>
+                <button id="viewSolution" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 hidden">View Solution</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

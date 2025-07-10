@@ -1,0 +1,43 @@
+/* Tailwind CSS is included via CDN in index.html. Additional custom styles for syntax highlighting and layout */
+body {
+    margin: 0;
+    padding: 0;
+}
+#editor {
+    min-height: 75vh;
+}
+pre.code-block {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-x: auto;
+}
+code {
+    font-family: 'Courier New', Courier, monospace;
+}
+code.keyword {
+    color: #ff79c6;
+}
+code.string {
+    color: #f1fa8c;
+}
+code.number {
+    color: #bd93f9;
+}
+code.comment {
+    color: #6272a4;
+}
+code.tag {
+    color: #ff79c6;
+}
+code.attribute {
+    color: #50fa7b;
+}
+code.property {
+    color: #66d9ef;
+}
+code.selector {
+    color: #f8f8f2;
+}
