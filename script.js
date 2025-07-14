@@ -20,6 +20,12 @@ const challenges = {
                 wrongOutput: "Check your arithmetic operation. Ensure you're adding the two numbers correctly.",
                 syntaxError: "There's a syntax error in your code. Check for missing parentheses, incorrect operators, or undefined variables.",
                 wrongFunctionName: "Ensure your function is named `sum` and takes two parameters."
+            },
+            hints: {
+                wrongOutput: "Try using the `+` operator to add the two parameters `a` and `b` and return the result directly.",
+                syntaxError: "Ensure your function declaration uses the correct syntax, e.g., `function sum(a, b) { ... }`.",
+                wrongFunctionName: "Your function must be named `sum` and accept two parameters, like `function sum(a, b)`.",
+                timeUp: "For this challenge, you need to add two numbers. Use the `+` operator and ensure your function is named `sum`."
             }
         },
         {
@@ -36,6 +42,12 @@ const challenges = {
                 wrongOutput: "Your function is not reversing the string correctly. Try splitting the string into an array, reversing it, and joining it back.",
                 syntaxError: "There's a syntax error in your code. Check for incorrect string methods or syntax issues.",
                 wrongFunctionName: "Ensure your function is named `reverseString` and takes one parameter."
+            },
+            hints: {
+                wrongOutput: "Use `str.split('')` to convert the string to an array, `.reverse()` to reverse it, and `.join('')` to convert back to a string.",
+                syntaxError: "Check the syntax for string methods, e.g., `split('')`, `reverse()`, and `join('')`.",
+                wrongFunctionName: "Your function must be named `reverseString` and accept one parameter, like `function reverseString(str)`.",
+                timeUp: "To reverse a string, split it into an array with `split('')`, reverse the array, and join it back with `join('')`."
             }
         }
     ],
@@ -54,6 +66,12 @@ const challenges = {
                 wrongOutput: "Check your recursive or iterative logic. Ensure you're multiplying correctly for the factorial.",
                 syntaxError: "There's a syntax error in your code. Check indentation, colons, or undefined variables.",
                 wrongFunctionName: "Ensure your function is named `factorial` and takes one parameter."
+            },
+            hints: {
+                wrongOutput: "For factorial, multiply `n` by the factorial of `n-1`. Use recursion or a loop to calculate it.",
+                syntaxError: "Ensure proper indentation and use `def factorial(n):` with a colon after the parameter.",
+                wrongFunctionName: "Your function must be named `factorial`, like `def factorial(n):`.",
+                timeUp: "Use recursion for factorial: return 1 if n is 0, otherwise return n * factorial(n-1)."
             }
         }
     ],
@@ -72,6 +90,12 @@ const challenges = {
                 wrongOutput: "Check your modulo operation. Ensure you're correctly determining if the number is even.",
                 syntaxError: "There's a syntax error in your code. Check for missing semicolons, braces, or incorrect method signatures.",
                 wrongFunctionName: "Ensure your method is named `isEven` and returns a boolean."
+            },
+            hints: {
+                wrongOutput: "Use the modulo operator `%` to check if `n` is divisible by 2 with no remainder.",
+                syntaxError: "Check your method signature, e.g., `public boolean isEven(int n) { ... }`.",
+                wrongFunctionName: "Your method must be named `isEven`, like `public boolean isEven(int n)`.",
+                timeUp: "To check if a number is even, return `n % 2 == 0` to see if it’s divisible by 2."
             }
         }
     ],
@@ -88,6 +112,12 @@ const challenges = {
                 wrongOutput: "Ensure your h1 tag includes a style attribute with text-align: center and the text 'Welcome'.",
                 syntaxError: "There's a syntax error in your HTML. Check for proper tag closing or attribute syntax.",
                 wrongFunctionName: "Ensure you're using an h1 tag with the specified style."
+            },
+            hints: {
+                wrongOutput: "Use an `<h1>` tag with a `style` attribute set to `text-align: center;` and the text 'Welcome' inside.",
+                syntaxError: "Ensure your HTML tags are properly closed, e.g., `<h1 style=\"text-align: center;\">Welcome</h1>`.",
+                wrongFunctionName: "Use an `<h1>` tag, not another tag type, with the correct style attribute.",
+                timeUp: "Create an `<h1>` tag with `style=\"text-align: center;\"` and put 'Welcome' inside it."
             }
         }
     ],
@@ -104,6 +134,12 @@ const challenges = {
                 wrongOutput: "Ensure your CSS sets the background-color to red and both width and height to 100px.",
                 syntaxError: "There's a syntax error in your CSS. Check for missing semicolons or incorrect property names.",
                 wrongFunctionName: "Ensure you're styling a div with the correct properties."
+            },
+            hints: {
+                wrongOutput: "Set `background-color: red;`, `width: 100px;`, and `height: 100px;` for the `div` selector.",
+                syntaxError: "Ensure each CSS property ends with a semicolon and is inside `div { ... }`.",
+                wrongFunctionName: "Use the `div` selector, like `div { ... }`, to apply the styles.",
+                timeUp: "Style a `div` with `background-color: red; width: 100px; height: 100px;`."
             }
         }
     ]
@@ -114,6 +150,7 @@ let timer;
 let timeLeft;
 let failedAttempts = 0;
 let currentLanguage = "javascript";
+let lastSubmissionFailed = false;
 
 // Load Challenge
 function loadChallenge(index, language) {
@@ -122,10 +159,12 @@ function loadChallenge(index, language) {
     document.getElementById("challengeDescription").textContent = challenge.description;
     document.getElementById("testResults").innerHTML = "";
     document.getElementById("viewSolution").classList.add("hidden");
+    document.getElementById("getHint").classList.add("hidden");
     document.getElementById("backChallenge").disabled = index === 0;
     editor.setValue("// Write your code here");
     editor.session.setMode(`ace/mode/${language}`);
     failedAttempts = 0;
+    lastSubmissionFailed = false;
     startTimer(challenge.timeLimit);
 }
 
@@ -141,6 +180,9 @@ function startTimer(seconds) {
             clearInterval(timer);
             document.getElementById("testResults").innerHTML = "<p class='text-red-500'>Time's up!</p>";
             document.getElementById("submitCode").disabled = true;
+            if (lastSubmissionFailed) {
+                document.getElementById("getHint").classList.remove("hidden");
+            }
         }
     }, 1000);
     document.getElementById("submitCode").disabled = false;
@@ -238,16 +280,21 @@ function verifyCode() {
         passed = false;
     }
 
+    lastSubmissionFailed = !passed;
     if (!passed) {
         failedAttempts++;
         results = `<p class="text-red-500">Some tests failed: ${feedback}</p>${results}`;
         if (failedAttempts >= 3) {
             document.getElementById("viewSolution").classList.remove("hidden");
         }
+        if (timeLeft <= 0) {
+            document.getElementById("getHint").classList.remove("hidden");
+        }
     } else {
         results = `<p class="text-green-500">All tests passed! Well done!</p>${results}`;
         failedAttempts = 0;
         document.getElementById("viewSolution").classList.add("hidden");
+        document.getElementById("getHint").classList.add("hidden");
     }
 
     document.getElementById("testResults").innerHTML = results;
@@ -272,12 +319,53 @@ function evalJavaMock(code, input) {
     return null;
 }
 
+// Get Hint
+function getHint() {
+    const challenge = challenges[currentLanguage][currentChallengeIndex];
+    const code = editor.getValue();
+    let hint = challenge.hints.timeUp;
+
+    try {
+        if (currentLanguage === "javascript") {
+            const userFunction = new Function(`return ${code}`)();
+            if (typeof userFunction !== "function") {
+                hint = challenge.hints.wrongFunctionName;
+            } else {
+                let anyFailed = false;
+                challenge.testCases.forEach((test) => {
+                    const result = userFunction(...test.input);
+                    if (JSON.stringify(result) !== JSON.stringify(test.expected)) {
+                        anyFailed = true;
+                    }
+                });
+                if (anyFailed) {
+                    hint = challenge.hints.wrongOutput;
+                }
+            }
+        } else if (currentLanguage === "python" && !code.includes("factorial")) {
+            hint = challenge.hints.wrongFunctionName;
+        } else if (currentLanguage === "java" && !code.includes("isEven")) {
+            hint = challenge.hints.wrongFunctionName;
+        } else if (currentLanguage === "html" || currentLanguage === "css") {
+            if (!challenge.testCases[0].expected.test(code)) {
+                hint = challenge.hints.wrongOutput;
+            }
+        }
+    } catch (e) {
+        hint = challenge.hints.syntaxError;
+    }
+
+    document.getElementById("testResults").innerHTML = `<p class="text-purple-500">Hint: ${hint}</p>`;
+    document.getElementById("getHint").classList.add("hidden");
+}
+
 // View Solution
 function showSolution() {
     const challenge = challenges[currentLanguage][currentChallengeIndex];
     editor.setValue(challenge.solution);
     document.getElementById("testResults").innerHTML = `<p class='text-yellow-500'>Solution displayed:</p>${highlightCode(challenge.solution, currentLanguage)}<p class='text-yellow-500'>Try to understand it and move to the next challenge.</p>`;
     document.getElementById("viewSolution").classList.add("hidden");
+    document.getElementById("getHint").classList.add("hidden");
     clearInterval(timer);
 }
 
@@ -299,6 +387,7 @@ document.getElementById("backChallenge").addEventListener("click", () => {
         loadChallenge(currentChallengeIndex, currentLanguage);
     }
 });
+document.getElementById("getHint").addEventListener("click", getHint);
 
 // Load first challenge
 editor.session.setMode("ace/mode/javascript");
