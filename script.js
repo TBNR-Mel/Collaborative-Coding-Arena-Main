@@ -21,12 +21,12 @@ const challenges = {
                 syntaxError: "There's a syntax error in your code. Check for missing parentheses, incorrect operators, or undefined variables.",
                 wrongFunctionName: "Ensure your function is named `sum` and takes two parameters."
             },
-            hints: {
-                wrongOutput: "Try using the `+` operator to add the two parameters `a` and `b` and return the result directly.",
-                syntaxError: "Ensure your function declaration uses the correct syntax, e.g., `function sum(a, b) { ... }`.",
-                wrongFunctionName: "Your function must be named `sum` and accept two parameters, like `function sum(a, b)`.",
-                timeUp: "For this challenge, you need to add two numbers. Use the `+` operator and ensure your function is named `sum`."
-            }
+            hints: [
+                "Ensure your function is named `sum` and accepts two parameters `a` and `b`.",
+                "Use the `+` operator to add the two parameters and return the result.",
+                "Check that your function returns a number, not a string or other type."
+            ],
+            points: 100
         },
         {
             title: "Reverse a String",
@@ -43,12 +43,12 @@ const challenges = {
                 syntaxError: "There's a syntax error in your code. Check for incorrect string methods or syntax issues.",
                 wrongFunctionName: "Ensure your function is named `reverseString` and takes one parameter."
             },
-            hints: {
-                wrongOutput: "Use `str.split('')` to convert the string to an array, `.reverse()` to reverse it, and `.join('')` to convert back to a string.",
-                syntaxError: "Check the syntax for string methods, e.g., `split('')`, `reverse()`, and `join('')`.",
-                wrongFunctionName: "Your function must be named `reverseString` and accept one parameter, like `function reverseString(str)`.",
-                timeUp: "To reverse a string, split it into an array with `split('')`, reverse the array, and join it back with `join('')`."
-            }
+            hints: [
+                "Use `str.split('')` to convert the string to an array of characters.",
+                "Apply the `.reverse()` method to reverse the array.",
+                "Use `.join('')` to convert the array back to a string."
+            ],
+            points: 100
         }
     ],
     python: [
@@ -67,12 +67,12 @@ const challenges = {
                 syntaxError: "There's a syntax error in your code. Check indentation, colons, or undefined variables.",
                 wrongFunctionName: "Ensure your function is named `factorial` and takes one parameter."
             },
-            hints: {
-                wrongOutput: "For factorial, multiply `n` by the factorial of `n-1`. Use recursion or a loop to calculate it.",
-                syntaxError: "Ensure proper indentation and use `def factorial(n):` with a colon after the parameter.",
-                wrongFunctionName: "Your function must be named `factorial`, like `def factorial(n):`.",
-                timeUp: "Use recursion for factorial: return 1 if n is 0, otherwise return n * factorial(n-1)."
-            }
+            hints: [
+                "Define the function as `def factorial(n):` with proper indentation.",
+                "Use recursion: return 1 if n is 0, else n * factorial(n-1).",
+                "Ensure proper base case and recursive step to avoid infinite recursion."
+            ],
+            points: 100
         }
     ],
     java: [
@@ -91,12 +91,12 @@ const challenges = {
                 syntaxError: "There's a syntax error in your code. Check for missing semicolons, braces, or incorrect method signatures.",
                 wrongFunctionName: "Ensure your method is named `isEven` and returns a boolean."
             },
-            hints: {
-                wrongOutput: "Use the modulo operator `%` to check if `n` is divisible by 2 with no remainder.",
-                syntaxError: "Check your method signature, e.g., `public boolean isEven(int n) { ... }`.",
-                wrongFunctionName: "Your method must be named `isEven`, like `public boolean isEven(int n)`.",
-                timeUp: "To check if a number is even, return `n % 2 == 0` to see if it’s divisible by 2."
-            }
+            hints: [
+                "Define the method as `public boolean isEven(int n)`.",
+                "Use the modulo operator `%` to check if n is divisible by 2.",
+                "Return `n % 2 == 0` for even numbers."
+            ],
+            points: 100
         }
     ],
     html: [
@@ -113,12 +113,12 @@ const challenges = {
                 syntaxError: "There's a syntax error in your HTML. Check for proper tag closing or attribute syntax.",
                 wrongFunctionName: "Ensure you're using an h1 tag with the specified style."
             },
-            hints: {
-                wrongOutput: "Use an `<h1>` tag with a `style` attribute set to `text-align: center;` and the text 'Welcome' inside.",
-                syntaxError: "Ensure your HTML tags are properly closed, e.g., `<h1 style=\"text-align: center;\">Welcome</h1>`.",
-                wrongFunctionName: "Use an `<h1>` tag, not another tag type, with the correct style attribute.",
-                timeUp: "Create an `<h1>` tag with `style=\"text-align: center;\"` and put 'Welcome' inside it."
-            }
+            hints: [
+                "Use an `<h1>` tag with the text 'Welcome' inside.",
+                "Add a `style` attribute to the `<h1>` tag.",
+                "Set `text-align: center;` in the style attribute."
+            ],
+            points: 100
         }
     ],
     css: [
@@ -135,12 +135,12 @@ const challenges = {
                 syntaxError: "There's a syntax error in your CSS. Check for missing semicolons or incorrect property names.",
                 wrongFunctionName: "Ensure you're styling a div with the correct properties."
             },
-            hints: {
-                wrongOutput: "Set `background-color: red;`, `width: 100px;`, and `height: 100px;` for the `div` selector.",
-                syntaxError: "Ensure each CSS property ends with a semicolon and is inside `div { ... }`.",
-                wrongFunctionName: "Use the `div` selector, like `div { ... }`, to apply the styles.",
-                timeUp: "Style a `div` with `background-color: red; width: 100px; height: 100px;`."
-            }
+            hints: [
+                "Use the `div` selector in your CSS.",
+                "Set `background-color: red;` for the background.",
+                "Set `width: 100px;` and `height: 100px;` for dimensions."
+            ],
+            points: 100
         }
     ]
 };
@@ -151,6 +151,9 @@ let timeLeft;
 let failedAttempts = 0;
 let currentLanguage = "javascript";
 let lastSubmissionFailed = false;
+let hintStep = 0;
+let totalScore = 0;
+let completedChallenges = {};
 
 // Load Challenge
 function loadChallenge(index, language) {
@@ -159,12 +162,13 @@ function loadChallenge(index, language) {
     document.getElementById("challengeDescription").textContent = challenge.description;
     document.getElementById("testResults").innerHTML = "";
     document.getElementById("viewSolution").classList.add("hidden");
-    document.getElementById("getHint").classList.add("hidden");
+    document.getElementById("hintSection").classList.add("hidden");
     document.getElementById("backChallenge").disabled = index === 0;
     editor.setValue("// Write your code here");
     editor.session.setMode(`ace/mode/${language}`);
     failedAttempts = 0;
     lastSubmissionFailed = false;
+    hintStep = 0;
     startTimer(challenge.timeLimit);
 }
 
@@ -246,7 +250,6 @@ function verifyCode() {
                 });
             }
         } else if (currentLanguage === "python") {
-            const userFunction = code;
             challenge.testCases.forEach((test, index) => {
                 const isCorrect = code.includes("factorial") && test.expected === evalPythonMock(code, test.input[0]);
                 results += `<p>Test ${index + 1}: ${isCorrect ? "Passed" : "Failed"}<br>Input: ${highlightCode(JSON.stringify(test.input), currentLanguage)}<br>Expected Output: ${formatExpectedOutput(test.expected, currentLanguage)}</p>`;
@@ -256,7 +259,6 @@ function verifyCode() {
                 }
             });
         } else if (currentLanguage === "java") {
-            const userFunction = code;
             challenge.testCases.forEach((test, index) => {
                 const isCorrect = code.includes("isEven") && test.expected === evalJavaMock(code, test.input[0]);
                 results += `<p>Test ${index + 1}: ${isCorrect ? "Passed" : "Failed"}<br>Input: ${highlightCode(JSON.stringify(test.input), currentLanguage)}<br>Expected Output: ${formatExpectedOutput(test.expected, currentLanguage)}</p>`;
@@ -283,31 +285,37 @@ function verifyCode() {
     lastSubmissionFailed = !passed;
     if (!passed) {
         failedAttempts++;
+        totalScore = Math.max(0, totalScore - 10); // Deduct 10 points for wrong answer
         results = `<p class="text-red-500">Some tests failed: ${feedback}</p>${results}`;
         if (failedAttempts >= 3) {
             document.getElementById("viewSolution").classList.remove("hidden");
         }
-        if (timeLeft <= 0) {
-            document.getElementById("getHint").classList.remove("hidden");
-        }
+        document.getElementById("getHint").classList.remove("hidden");
     } else {
-        results = `<p class="text-green-500">All tests passed! Well done!</p>${results}`;
+        if (!completedChallenges[currentLanguage]?.includes(currentChallengeIndex)) {
+            totalScore += challenge.points;
+            if (!completedChallenges[currentLanguage]) completedChallenges[currentLanguage] = [];
+            completedChallenges[currentLanguage].push(currentChallengeIndex);
+        }
+        results = `<p class="text-green-500">All tests passed! Well done! (+${challenge.points} points)</p>${results}`;
         failedAttempts = 0;
         document.getElementById("viewSolution").classList.add("hidden");
         document.getElementById("getHint").classList.add("hidden");
     }
 
     document.getElementById("testResults").innerHTML = results;
+    document.getElementById("totalScore").textContent = totalScore;
     clearInterval(timer);
 }
 
 // Mock Python and Java evaluation
 function evalPythonMock(code, input) {
     if (code.includes("factorial")) {
-        let n = input;
-        let result = 1;
-        for (let i = 1; i <= n; i++) result *= i;
-        return result;
+        function factorial(n) {
+            if (n === 0) return 1;
+            return n * factorial(n - 1);
+        }
+        return factorial(input);
     }
     return null;
 }
@@ -323,13 +331,14 @@ function evalJavaMock(code, input) {
 function getHint() {
     const challenge = challenges[currentLanguage][currentChallengeIndex];
     const code = editor.getValue();
-    let hint = challenge.hints.timeUp;
+    let hint = challenge.hints[hintStep];
+    const pointDeduction = [10, 20, 30][hintStep];
 
     try {
         if (currentLanguage === "javascript") {
             const userFunction = new Function(`return ${code}`)();
             if (typeof userFunction !== "function") {
-                hint = challenge.hints.wrongFunctionName;
+                hint = challenge.hints[0]; // Function name hint
             } else {
                 let anyFailed = false;
                 challenge.testCases.forEach((test) => {
@@ -339,24 +348,31 @@ function getHint() {
                     }
                 });
                 if (anyFailed) {
-                    hint = challenge.hints.wrongOutput;
+                    hint = challenge.hints[hintStep];
                 }
             }
         } else if (currentLanguage === "python" && !code.includes("factorial")) {
-            hint = challenge.hints.wrongFunctionName;
+            hint = challenge.hints[0];
         } else if (currentLanguage === "java" && !code.includes("isEven")) {
-            hint = challenge.hints.wrongFunctionName;
+            hint = challenge.hints[0];
         } else if (currentLanguage === "html" || currentLanguage === "css") {
             if (!challenge.testCases[0].expected.test(code)) {
-                hint = challenge.hints.wrongOutput;
+                hint = challenge.hints[hintStep];
             }
         }
     } catch (e) {
-        hint = challenge.hints.syntaxError;
+        hint = challenge.hints[0]; // Syntax error hint
     }
 
-    document.getElementById("testResults").innerHTML = `<p class="text-purple-500">Hint: ${hint}</p>`;
-    document.getElementById("getHint").classList.add("hidden");
+    document.getElementById("hintSection").classList.remove("hidden");
+    document.getElementById("hintText").textContent = hint;
+    document.getElementById("hintStep").textContent = hintStep + 1;
+    totalScore = Math.max(0, totalScore - pointDeduction);
+    document.getElementById("totalScore").textContent = totalScore;
+    hintStep = (hintStep + 1) % 3;
+    if (hintStep === 0) {
+        document.getElementById("getHint").classList.add("hidden");
+    }
 }
 
 // View Solution
@@ -366,7 +382,10 @@ function showSolution() {
     document.getElementById("testResults").innerHTML = `<p class='text-yellow-500'>Solution displayed:</p>${highlightCode(challenge.solution, currentLanguage)}<p class='text-yellow-500'>Try to understand it and move to the next challenge.</p>`;
     document.getElementById("viewSolution").classList.add("hidden");
     document.getElementById("getHint").classList.add("hidden");
+    document.getElementById("hintSection").classList.add("hidden");
     clearInterval(timer);
+    totalScore = Math.max(0, totalScore - 50); // Deduct 50 points for viewing solution
+    document.getElementById("totalScore").textContent = totalScore;
 }
 
 // Event Listeners
@@ -374,6 +393,8 @@ document.getElementById("languageSelect").addEventListener("change", (e) => {
     currentLanguage = e.target.value;
     currentChallengeIndex = 0;
     loadChallenge(currentChallengeIndex, currentLanguage);
+    totalScore = completedChallenges[currentLanguage]?.score || 0;
+    document.getElementById("totalScore").textContent = totalScore;
 });
 
 document.getElementById("submitCode").addEventListener("click", verifyCode);
@@ -388,6 +409,7 @@ document.getElementById("backChallenge").addEventListener("click", () => {
     }
 });
 document.getElementById("getHint").addEventListener("click", getHint);
+document.getElementById("viewSolution").addEventListener("click", showSolution);
 
 // Load first challenge
 editor.session.setMode("ace/mode/javascript");
