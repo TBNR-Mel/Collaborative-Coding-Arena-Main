@@ -561,8 +561,9 @@ require(['vs/editor/editor.main'], function () {
         document.getElementById("validationFeedback").classList.add("hidden");
         document.getElementById("viewSolution").classList.add("hidden");
         document.getElementById("hintSection").classList.add("hidden");
-        document.getElementById("getHint").textContent = "Get Hint"; // Reset hint button text
         document.getElementById("getHint").classList.add("hidden");
+        document.getElementById("getHint").textContent = "Get Hint"; // Reset hint button text
+        console.log("loadChallenge: getHint button hidden");
         document.getElementById("backChallenge").disabled = index === 0;
         document.getElementById("backChallenge").classList.toggle("dimmed", index === 0);
         document.getElementById("nextChallenge").disabled = index === filteredChallenges.length - 1;
@@ -589,9 +590,8 @@ require(['vs/editor/editor.main'], function () {
                 document.getElementById("testResults").innerHTML = "<p class='text-red-500'>Time's up!</p>";
                 document.getElementById("submitCode").disabled = true;
                 document.getElementById("validateCode").disabled = true;
-                if (lastSubmissionFailed) {
-                    document.getElementById("getHint").classList.remove("hidden");
-                }
+                document.getElementById("getHint").classList.remove("hidden");
+                console.log("Timer expired: getHint button shown");
             }
         }, 1000);
         document.getElementById("submitCode").disabled = false;
@@ -716,6 +716,8 @@ require(['vs/editor/editor.main'], function () {
         if (feedback) {
             feedbackElement.textContent = feedback;
             feedbackElement.classList.remove("hidden");
+            document.getElementById("getHint").classList.remove("hidden");
+            console.log("validateCode: getHint button shown due to validation feedback");
         } else {
             feedbackElement.textContent = "Code looks good so far!";
             feedbackElement.classList.remove("hidden");
@@ -788,10 +790,11 @@ require(['vs/editor/editor.main'], function () {
             failedAttempts++;
             totalScore = Math.max(0, totalScore - 10);
             results = `<p class="text-red-500">Some tests failed: ${feedback}</p>${results}`;
+            document.getElementById("getHint").classList.remove("hidden");
+            console.log("verifyCode: getHint button shown due to failed submission");
             if (failedAttempts >= 3) {
                 document.getElementById("viewSolution").classList.remove("hidden");
             }
-            document.getElementById("getHint").classList.remove("hidden");
         } else {
             if (!completedChallenges[currentLanguage]?.includes(currentChallengeIndex)) {
                 totalScore += challenge.points;
@@ -802,6 +805,7 @@ require(['vs/editor/editor.main'], function () {
             failedAttempts = 0;
             document.getElementById("viewSolution").classList.add("hidden");
             document.getElementById("getHint").classList.add("hidden");
+            console.log("verifyCode: getHint button hidden due to successful submission");
         }
 
         document.getElementById("testResults").innerHTML = results;
@@ -906,9 +910,8 @@ require(['vs/editor/editor.main'], function () {
         document.getElementById("totalScore").textContent = totalScore;
         hintStep = (hintStep + 1) % 3;
         document.getElementById("getHint").textContent = hintStep === 0 ? "Get Hint" : "Next Hint";
-        if (hintStep === 0) {
-            document.getElementById("getHint").classList.add("hidden");
-        }
+        document.getElementById("getHint").classList.remove("hidden");
+        console.log(`getHint: getHint button set to "${document.getElementById("getHint").textContent}"`);
     }
 
     // View Solution
@@ -921,6 +924,7 @@ require(['vs/editor/editor.main'], function () {
         document.getElementById("hintSection").classList.add("hidden");
         document.getElementById("validationFeedback").classList.add("hidden");
         document.getElementById("getHint").textContent = "Get Hint";
+        console.log("showSolution: getHint button hidden");
         clearInterval(timer);
         totalScore = Math.max(0, totalScore - 50);
         document.getElementById("totalScore").textContent = totalScore;
@@ -954,6 +958,8 @@ require(['vs/editor/editor.main'], function () {
             document.getElementById("nextChallenge").classList.add("dimmed");
             document.getElementById("backChallenge").disabled = true;
             document.getElementById("backChallenge").classList.add("dimmed");
+            document.getElementById("getHint").classList.add("hidden");
+            console.log("categorySelect: getHint button hidden due to no challenges");
             clearInterval(timer);
         }
     });
