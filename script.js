@@ -33,9 +33,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `sum` and takes two parameters."
                 },
                 hints: [
-                    "Ensure your function is named `sum` and accepts two parameters `a` and `b`.",
-                    "Use the `+` operator to add the two parameters and return the result.",
-                    "Check that your function returns a number, not a string or other type."
+                    "Name your function exactly `sum` with parameters `a` and `b`.",
+                    "Use the `+` operator to add `a` and `b` inside the function.",
+                    "Return the result directly without extra calculations."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -58,9 +58,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `reverseString` and takes one parameter."
                 },
                 hints: [
-                    "Use `str.split('')` to convert the string to an array of characters.",
-                    "Apply the `.reverse()` method to reverse the array.",
-                    "Use `.join('')` to convert the array back to a string."
+                    "Name your function `reverseString` and ensure it accepts a `str` parameter.",
+                    "Split the string into an array using `str.split('')`, then use `reverse()` to reverse the array.",
+                    "Join the array back into a string with `join('')` and return it."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -83,9 +83,59 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `fibonacci` and takes one parameter."
                 },
                 hints: [
-                    "The function should be named `fibonacci` and take a single parameter `n`.",
-                    "Use a loop to calculate Fibonacci numbers iteratively, starting with 0 and 1.",
-                    "For each iteration, store the sum of the previous two numbers and update variables."
+                    "Name your function `fibonacci` with a single parameter `n`.",
+                    "Use a loop starting with `a = 0`, `b = 1`, and iterate from `i = 2` to `n`.",
+                    "In each iteration, compute `temp = a + b`, update `a = b`, `b = temp`, and return `b`."
+                ],
+                points: 150,
+                difficulty: "Medium",
+                category: "Algorithms"
+            },
+            {
+                title: "Palindrome Check",
+                description: "Write a function `isPalindrome(str)` that returns true if the string is a palindrome (reads the same forwards and backwards), false otherwise.",
+                testCases: [
+                    { input: ["racecar"], expected: true },
+                    { input: ["hello"], expected: false },
+                    { input: ["A man a plan a canal Panama"], expected: true }
+                ],
+                timeLimit: 60,
+                solution: "function isPalindrome(str) { str = str.toLowerCase().replace(/[^a-z0-9]/g, ''); return str === str.split('').reverse().join(''); }",
+                boilerplate: "function isPalindrome(str) {\n    // Your code here\n}",
+                feedback: {
+                    wrongOutput: "Check your string comparison. Ensure you're handling case and non-alphanumeric characters correctly.",
+                    syntaxError: "There's a syntax error in your code. Check for incorrect string methods or syntax issues.",
+                    wrongFunctionName: "Ensure your function is named `isPalindrome` and takes one parameter."
+                },
+                hints: [
+                    "Name your function `isPalindrome` and ensure it accepts a `str` parameter.",
+                    "Convert the string to lowercase and remove non-alphanumeric characters using `toLowerCase()` and a regex like `/[^a-z0-9]/g`.",
+                    "Compare the cleaned string with its reverse using `split('').reverse().join('')`."
+                ],
+                points: 100,
+                difficulty: "Easy",
+                category: "Basics"
+            },
+            {
+                title: "Array Max",
+                description: "Write a function `findMax(arr)` that returns the maximum value in an array of numbers.",
+                testCases: [
+                    { input: [[1, 5, 3, 8, 2]], expected: 8 },
+                    { input: [[-1, -5, -2]], expected: -1 },
+                    { input: [[10]], expected: 10 }
+                ],
+                timeLimit: 90,
+                solution: "function findMax(arr) { return Math.max(...arr); }",
+                boilerplate: "function findMax(arr) {\n    // Your code here\n}",
+                feedback: {
+                    wrongOutput: "Check your logic for finding the maximum value. Ensure you're comparing all array elements.",
+                    syntaxError: "There's a syntax error in your code. Check for incorrect loop or array access syntax.",
+                    wrongFunctionName: "Ensure your function is named `findMax` and takes one parameter."
+                },
+                hints: [
+                    "Name your function `findMax` and ensure it accepts an `arr` parameter.",
+                    "Iterate through the array or use `Math.max(...arr)` to find the largest value.",
+                    "If using a loop, initialize a variable with the first element and update it if a larger value is found."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -111,8 +161,8 @@ require(['vs/editor/editor.main'], function () {
                 },
                 hints: [
                     "Define the function as `def factorial(n):` with proper indentation.",
-                    "Use recursion: return 1 if n is 0, else n * factorial(n-1).",
-                    "Ensure proper base case and recursive step to avoid infinite recursion."
+                    "Set the base case to return 1 if `n == 0`.",
+                    "Use recursion with `n * factorial(n - 1)` for other cases."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -135,9 +185,59 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `is_prime` and takes one parameter."
                 },
                 hints: [
-                    "Name the function `is_prime` and accept an integer parameter.",
-                    "Check if n < 2, return False; otherwise, test divisibility up to sqrt(n).",
-                    "Use a loop to check if n is divisible by any number from 2 to sqrt(n)."
+                    "Define the function as `def is_prime(n):` with proper indentation.",
+                    "Return `False` if `n < 2`, as numbers less than 2 are not prime.",
+                    "Loop from 2 to `int(n ** 0.5) + 1` and check if `n` is divisible by `i`."
+                ],
+                points: 150,
+                difficulty: "Medium",
+                category: "Algorithms"
+            },
+            {
+                title: "List Sum",
+                description: "Write a function `list_sum(numbers)` that returns the sum of all numbers in a list.",
+                testCases: [
+                    { input: [[1, 2, 3]], expected: 6 },
+                    { input: [[-1, 1]], expected: 0 },
+                    { input: [[]], expected: 0 }
+                ],
+                timeLimit: 60,
+                solution: "def list_sum(numbers):\n    return sum(numbers)",
+                boilerplate: "def list_sum(numbers):\n    # Your code here\n",
+                feedback: {
+                    wrongOutput: "Check your summing logic. Ensure you're adding all numbers in the list.",
+                    syntaxError: "There's a syntax error in your code. Check for incorrect loop or sum syntax.",
+                    wrongFunctionName: "Ensure your function is named `list_sum` and takes one parameter."
+                },
+                hints: [
+                    "Define the function as `def list_sum(numbers):` with proper indentation.",
+                    "Use Python's built-in `sum(numbers)` function or a loop to add all elements.",
+                    "Return 0 if the list is empty."
+                ],
+                points: 100,
+                difficulty: "Easy",
+                category: "Basics"
+            },
+            {
+                title: "Binary Search",
+                description: "Write a function `binary_search(arr, target)` that returns the index of `target` in a sorted list `arr`, or -1 if not found.",
+                testCases: [
+                    { input: [[1, 2, 3, 4, 5], 3], expected: 2 },
+                    { input: [[1, 2, 3], 4], expected: -1 },
+                    { input: [[1], 1], expected: 0 }
+                ],
+                timeLimit: 90,
+                solution: "def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1",
+                boilerplate: "def binary_search(arr, target):\n    # Your code here\n",
+                feedback: {
+                    wrongOutput: "Check your binary search logic. Ensure you're updating the search range correctly.",
+                    syntaxError: "There's a syntax error in your code. Check loop conditions or indexing.",
+                    wrongFunctionName: "Ensure your function is named `binary_search` and takes two parameters."
+                },
+                hints: [
+                    "Define the function as `def binary_search(arr, target):` with two parameters.",
+                    "Initialize `left = 0` and `right = len(arr) - 1`, then use a while loop with `left <= right`.",
+                    "Calculate `mid = (left + right) // 2` and adjust `left` or `right` based on `arr[mid]` vs `target`."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -163,8 +263,8 @@ require(['vs/editor/editor.main'], function () {
                 },
                 hints: [
                     "Define the method as `public boolean isEven(int n)`.",
-                    "Use the modulo operator `%` to check if n is divisible by 2.",
-                    "Return `n % 2 == 0` for even numbers."
+                    "Use the modulo operator `%` to check if `n` is divisible by 2.",
+                    "Return `n % 2 == 0` to indicate an even number."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -188,8 +288,58 @@ require(['vs/editor/editor.main'], function () {
                 },
                 hints: [
                     "Define the method as `public int countVowels(String s)`.",
-                    "Convert the string to lowercase and iterate through each character.",
-                    "Increment a counter for each vowel (a, e, i, o, u)."
+                    "Convert `s` to lowercase using `toLowerCase()` and iterate over each character.",
+                    "Check if each character is a vowel (`a`, `e`, `i`, `o`, `u`) and increment a counter."
+                ],
+                points: 150,
+                difficulty: "Medium",
+                category: "Algorithms"
+            },
+            {
+                title: "Square Number",
+                description: "Write a method `squareNumber(n)` that returns the square of a number n.",
+                testCases: [
+                    { input: [4], expected: 16 },
+                    { input: [0], expected: 0 },
+                    { input: [-2], expected: 4 }
+                ],
+                timeLimit: 60,
+                solution: "public int squareNumber(int n) {\n    return n * n;\n}",
+                boilerplate: "public int squareNumber(int n) {\n    // Your code here\n}",
+                feedback: {
+                    wrongOutput: "Check your multiplication logic. Ensure you're squaring the number correctly.",
+                    syntaxError: "There's a syntax error in your code. Check for missing semicolons or incorrect operators.",
+                    wrongFunctionName: "Ensure your method is named `squareNumber` and returns an int."
+                },
+                hints: [
+                    "Define the method as `public int squareNumber(int n)`.",
+                    "Multiply `n` by itself using the `*` operator.",
+                    "Return the result directly without extra calculations."
+                ],
+                points: 100,
+                difficulty: "Easy",
+                category: "Basics"
+            },
+            {
+                title: "Longest Word",
+                description: "Write a method `longestWord(s)` that returns the longest word in a string (return the first if multiple have the same length).",
+                testCases: [
+                    { input: ["hello world"], expected: "hello" },
+                    { input: ["cat dog"], expected: "cat" },
+                    { input: ["a"], expected: "a" }
+                ],
+                timeLimit: 90,
+                solution: "public String longestWord(String s) {\n    String[] words = s.split(\" \");\n    String longest = \"\";\n    for (String word : words) {\n        if (word.length() > longest.length()) longest = word;\n    }\n    return longest;\n}",
+                boilerplate: "public String longestWord(String s) {\n    // Your code here\n}",
+                feedback: {
+                    wrongOutput: "Check your logic for finding the longest word. Ensure you're comparing word lengths correctly.",
+                    syntaxError: "There's a syntax error in your code. Check for incorrect string splitting or loop syntax.",
+                    wrongFunctionName: "Ensure your method is named `longestWord` and returns a String."
+                },
+                hints: [
+                    "Define the method as `public String longestWord(String s)`.",
+                    "Split the string into words using `s.split(\" \")`.",
+                    "Loop through the words and track the one with the maximum length using `word.length()`."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -212,9 +362,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using an h1 tag with the specified style."
                 },
                 hints: [
-                    "Use an `<h1>` tag with the text 'Welcome' inside.",
-                    "Add a `style` attribute to the `<h1>` tag.",
-                    "Set `text-align: center;` in the style attribute."
+                    "Use an `<h1>` tag and set its content to 'Welcome'.",
+                    "Add a `style` attribute to the `<h1>` tag with `text-align: center;`.",
+                    "Ensure the tag is properly closed with `</h1>`."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -235,9 +385,55 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using a form tag with the correct inputs."
                 },
                 hints: [
-                    "Use a `<form>` tag to wrap your inputs.",
-                    "Add an `<input type=\"text\">` for the text field.",
-                    "Add an `<input type=\"submit\">` for the submit button."
+                    "Start with a `<form>` tag and close it with `</form>`.",
+                    "Add an `<input>` tag with `type=\"text\"` for the text field.",
+                    "Add an `<input>` tag with `type=\"submit\"` for the submit button."
+                ],
+                points: 150,
+                difficulty: "Medium",
+                category: "Web Development"
+            },
+            {
+                title: "Image Gallery",
+                description: "Write HTML code to create a gallery with three images, each with an alt attribute.",
+                testCases: [
+                    { input: [], expected: /<div[^>]*>[\s\S]*<img[^>]*src\s*=\s*['"][^'"]*['"][^>]*alt\s*=\s*['"][^'"]*['"][^>]*>[\s\S]*<img[^>]*src\s*=\s*['"][^'"]*['"][^>]*alt\s*=\s*['"][^'"]*['"][^>]*>[\s\S]*<img[^>]*src\s*=\s*['"][^'"]*['"][^>]*alt\s*=\s*['"][^'"]*['"][^>]*>[\s\S]*<\/div>/i }
+                ],
+                timeLimit: 60,
+                solution: "<div>\n    <img src=\"image1.jpg\" alt=\"Image 1\">\n    <img src=\"image2.jpg\" alt=\"Image 2\">\n    <img src=\"image3.jpg\" alt=\"Image 3\">\n</div>",
+                boilerplate: "<div>\n    <!-- Your code here -->\n</div>",
+                feedback: {
+                    wrongOutput: "Ensure your div contains three img tags, each with src and alt attributes.",
+                    syntaxError: "There's a syntax error in your HTML. Check for proper tag closing or attribute syntax.",
+                    wrongFunctionName: "Ensure you're using a div with three img tags."
+                },
+                hints: [
+                    "Use a `<div>` tag to wrap your gallery.",
+                    "Add three `<img>` tags, each with a `src` attribute (e.g., 'image1.jpg').",
+                    "Include an `alt` attribute for each image (e.g., 'Image 1')."
+                ],
+                points: 100,
+                difficulty: "Easy",
+                category: "Web Development"
+            },
+            {
+                title: "Navigation Bar",
+                description: "Write HTML code to create a navigation bar with three links inside a nav tag.",
+                testCases: [
+                    { input: [], expected: /<nav[^>]*>[\s\S]*<a[^>]*href\s*=\s*['"][^'"]*['"][^>]*>[\s\S]*<\/a>[\s\S]*<a[^>]*href\s*=\s*['"][^'"]*['"][^>]*>[\s\S]*<\/a>[\s\S]*<a[^>]*href\s*=\s*['"][^'"]*['"][^>]*>[\s\S]*<\/a>[\s\S]*<\/nav>/i }
+                ],
+                timeLimit: 90,
+                solution: "<nav>\n    <a href=\"home.html\">Home</a>\n    <a href=\"about.html\">About</a>\n    <a href=\"contact.html\">Contact</a>\n</nav>",
+                boilerplate: "<nav>\n    <!-- Your code here -->\n</nav>",
+                feedback: {
+                    wrongOutput: "Ensure your nav tag contains three a tags with href attributes.",
+                    syntaxError: "There's a syntax error in your HTML. Check for proper tag closing or href syntax.",
+                    wrongFunctionName: "Ensure you're using a nav tag with three links."
+                },
+                hints: [
+                    "Use a `<nav>` tag to wrap your navigation bar.",
+                    "Add three `<a>` tags, each with an `href` attribute (e.g., 'home.html').",
+                    "Include text inside each `<a>` tag (e.g., 'Home') and close with `</a>`."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -260,9 +456,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're styling a div with the correct properties."
                 },
                 hints: [
-                    "Use the `div` selector in your CSS.",
-                    "Set `background-color: red;` for the background.",
-                    "Set `width: 100px;` and `height: 100px;` for dimensions."
+                    "Use the `div` selector followed by curly braces `{}`.",
+                    "Set `background-color: red;` inside the braces.",
+                    "Add `width: 100px;` and `height: 100px;` with proper semicolons."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -283,9 +479,55 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using the div:hover selector."
                 },
                 hints: [
-                    "Use the `div:hover` selector for the hover effect.",
-                    "Set `background-color: blue;` inside the hover block.",
-                    "Ensure the selector is `div:hover`, not just `div`."
+                    "Use the `div:hover` selector to target the hover state.",
+                    "Set `background-color: blue;` inside the `div:hover` block.",
+                    "Ensure the syntax is `div:hover {}` with no spaces in `:hover`."
+                ],
+                points: 150,
+                difficulty: "Medium",
+                category: "Web Development"
+            },
+            {
+                title: "Center Div",
+                description: "Write CSS to center a div horizontally and vertically within its parent.",
+                testCases: [
+                    { input: [], expected: /div\s*{\s*display\s*:\s*(flex|grid|block)\s*;[^}]*((margin\s*:\s*auto\s*;[^}]*top\s*:\s*50%\s*;[^}]*transform\s*:\s*translateY\s*\(\s*-50%\s*\)\s*;|justify-content\s*:\s*center\s*;[^}]*align-items\s*:\s*center\s*;|place-items\s*:\s*center\s*;))/i }
+                ],
+                timeLimit: 60,
+                solution: "div {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n}",
+                boilerplate: "div {\n    /* Your code here */\n}",
+                feedback: {
+                    wrongOutput: "Ensure your CSS centers the div both horizontally and vertically.",
+                    syntaxError: "There's a syntax error in your CSS. Check for missing semicolons or incorrect properties.",
+                    wrongFunctionName: "Ensure you're styling a div with the correct centering properties."
+                },
+                hints: [
+                    "Use the `div` selector followed by curly braces `{}`.",
+                    "Set `display: flex;` to enable flexbox centering.",
+                    "Add `justify-content: center;` and `align-items: center;` to center the div."
+                ],
+                points: 100,
+                difficulty: "Easy",
+                category: "Web Development"
+            },
+            {
+                title: "Button Hover Animation",
+                description: "Write CSS to scale a button to 1.2 times its size on hover.",
+                testCases: [
+                    { input: [], expected: /button\s*:hover\s*{\s*transform\s*:\s*scale\s*\(\s*1\.2\s*\)\s*;/i }
+                ],
+                timeLimit: 90,
+                solution: "button:hover {\n    transform: scale(1.2);\n}",
+                boilerplate: "button:hover {\n    /* Your code here */\n}",
+                feedback: {
+                    wrongOutput: "Ensure your CSS scales the button to 1.2 times on hover.",
+                    syntaxError: "There's a syntax error in your CSS. Check for proper transform syntax.",
+                    wrongFunctionName: "Ensure you're using the button:hover selector."
+                },
+                hints: [
+                    "Use the `button:hover` selector to target the hover state.",
+                    "Set `transform: scale(1.2);` to increase the button size by 20%.",
+                    "Ensure the transform property is inside the `button:hover` block."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -389,9 +631,9 @@ require(['vs/editor/editor.main'], function () {
                 .replace(/(".*?")/g, '<span class="string">$1</span>');
         } else if (language === "css") {
             formattedCode = formattedCode
-                .replace(/(div|[a-z-]+\s*:)/g, '<span class="property">$1</span>')
-                .replace(/(red|#ff0000|blue|#0000ff|100px)/g, '<span class="string">$1</span>')
-                .replace(/(div\s*{|div:hover\s*{)/g, '<span class="selector">$1</span>');
+                .replace(/(div|button|[a-z-]+\s*:)/g, '<span class="property">$1</span>')
+                .replace(/(red|#ff0000|blue|#0000ff|100px|1\.2)/g, '<span class="string">$1</span>')
+                .replace(/(div\s*{|div:hover\s*{|button:hover\s*{)/g, '<span class="selector">$1</span>');
         }
         return `<pre class="code-block"><code>${formattedCode}</code></pre>`;
     }
@@ -510,7 +752,7 @@ require(['vs/editor/editor.main'], function () {
                 }
             } else if (currentLanguage === "python") {
                 challenge.testCases.forEach((test, index) => {
-                    const isCorrect = code.includes(challenge.title.toLowerCase().replace(" ", "_")) && test.expected === evalPythonMock(code, test.input[0]);
+                    const isCorrect = code.includes(challenge.title.toLowerCase().replace(" ", "_")) && test.expected === evalPythonMock(code, test.input);
                     results += `<p>Test ${index + 1}: ${isCorrect ? "Passed" : "Failed"}<br>Input: ${highlightCode(JSON.stringify(test.input), currentLanguage)}<br>Expected Output: ${formatExpectedOutput(test.expected, currentLanguage)}</p>`;
                     if (!isCorrect) {
                         passed = false;
@@ -519,7 +761,7 @@ require(['vs/editor/editor.main'], function () {
                 });
             } else if (currentLanguage === "java") {
                 challenge.testCases.forEach((test, index) => {
-                    const isCorrect = code.includes(challenge.title.toLowerCase().replace(" ", "")) && test.expected === evalJavaMock(code, test.input[0]);
+                    const isCorrect = code.includes(challenge.title.toLowerCase().replace(" ", "")) && test.expected === evalJavaMock(code, test.input);
                     results += `<p>Test ${index + 1}: ${isCorrect ? "Passed" : "Failed"}<br>Input: ${highlightCode(JSON.stringify(test.input), currentLanguage)}<br>Expected Output: ${formatExpectedOutput(test.expected, currentLanguage)}</p>`;
                     if (!isCorrect) {
                         passed = false;
@@ -575,26 +817,47 @@ require(['vs/editor/editor.main'], function () {
                 if (n === 0) return 1;
                 return n * factorial(n - 1);
             }
-            return factorial(input);
+            return factorial(input[0]);
         } else if (code.includes("is_prime")) {
-            if (input < 2) return false;
-            for (let i = 2; i <= Math.sqrt(input); i++) {
-                if (input % i === 0) return false;
+            if (input[0] < 2) return false;
+            for (let i = 2; i <= Math.sqrt(input[0]); i++) {
+                if (input[0] % i === 0) return false;
             }
             return true;
+        } else if (code.includes("list_sum")) {
+            return input[0].reduce((sum, num) => sum + num, 0);
+        } else if (code.includes("binary_search")) {
+            let arr = input[0], target = input[1];
+            let left = 0, right = arr.length - 1;
+            while (left <= right) {
+                let mid = Math.floor((left + right) / 2);
+                if (arr[mid] === target) return mid;
+                else if (arr[mid] < target) left = mid + 1;
+                else right = mid - 1;
+            }
+            return -1;
         }
         return null;
     }
 
     function evalJavaMock(code, input) {
         if (code.includes("isEven")) {
-            return input % 2 === 0;
+            return input[0] % 2 === 0;
         } else if (code.includes("countVowels")) {
             let count = 0;
-            for (let c of input.toLowerCase()) {
+            for (let c of input[0].toLowerCase()) {
                 if ("aeiou".includes(c)) count++;
             }
             return count;
+        } else if (code.includes("squareNumber")) {
+            return input[0] * input[0];
+        } else if (code.includes("longestWord")) {
+            let words = input[0].split(" ");
+            let longest = "";
+            for (let word of words) {
+                if (word.length > longest.length) longest = word;
+            }
+            return longest;
         }
         return null;
     }
