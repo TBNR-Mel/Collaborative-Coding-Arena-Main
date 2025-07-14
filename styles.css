@@ -4,39 +4,51 @@ body {
 }
 #editor {
     min-height: 75vh;
+    background-color: #1e1e1e;
+    border: 1px solid #3c3c3c;
 }
 pre.code-block {
     background-color: #2d2d2d;
     color: #f8f8f2;
     padding: 10px;
     border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
     overflow-x: auto;
 }
 code {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
 }
 code.keyword {
-    color: #ff79c6;
+    color: #c586c0;
 }
 code.string {
-    color: #f1fa8c;
+    color: #ce9178;
 }
 code.number {
-    color: #bd93f9;
+    color: #b5cea8;
 }
 code.comment {
-    color: #6272a4;
+    color: #6a9955;
 }
 code.tag {
-    color: #ff79c6;
+    color: #569cd6;
 }
 code.attribute {
-    color: #50fa7b;
+    color: #9cdcfe;
 }
 code.property {
-    color: #66d9ef;
+    color: #9cdcfe;
 }
 code.selector {
-    color: #f8f8f2;
+    color: #d7ba7d;
+}
+#progressBar {
+    transition: width 0.3s ease-in-out;
+}
+button.dimmed {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+button.dimmed:hover {
+    background-color: inherit;
 }
