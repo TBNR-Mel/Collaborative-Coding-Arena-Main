@@ -1,54 +1,125 @@
+/* General Styling */
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
-#editor {
-    min-height: 75vh;
-    background-color: #1e1e1e;
-    border: 1px solid #3c3c3c;
+
+h2 {
+    color: #333;
 }
-pre.code-block {
-    background-color: #2d2d2d;
-    color: #f8f8f2;
-    padding: 10px;
-    border-radius: 4px;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    overflow-x: auto;
+
+select, button {
+    cursor: pointer;
 }
-code {
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-}
-code.keyword {
-    color: #c586c0;
-}
-code.string {
-    color: #ce9178;
-}
-code.number {
-    color: #b5cea8;
-}
-code.comment {
-    color: #6a9955;
-}
-code.tag {
-    color: #569cd6;
-}
-code.attribute {
-    color: #9cdcfe;
-}
-code.property {
-    color: #9cdcfe;
-}
-code.selector {
-    color: #d7ba7d;
-}
-#progressBar {
-    transition: width 0.3s ease-in-out;
-}
-button.dimmed {
+
+button:disabled.dimmed {
     opacity: 0.5;
     cursor: not-allowed;
 }
-button.dimmed:hover {
-    background-color: inherit;
+
+/* Editor Section */
+#editor {
+    width: 100%;
+    height: 75vh;
+    border: 1px solid #ccc;
+}
+
+/* Challenge Section */
+#challengeInfo {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#testResults p {
+    margin: 10px 0;
+}
+
+#validationFeedback {
+    font-weight: bold;
+}
+
+/* Syntax Highlighting for Code Feedback */
+.code-block {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    overflow-x: auto;
+}
+
+.keyword {
+    color: #0000ff;
+    font-weight: bold;
+}
+
+.string {
+    color: #008000;
+}
+
+.number {
+    color: #ff4500;
+}
+
+.comment {
+    color: #808080;
+    font-style: italic;
+}
+
+.tag {
+    color: #800080;
+}
+
+.attribute {
+    color: #ff0000;
+}
+
+.property {
+    color: #0000ff;
+}
+
+.selector {
+    color: #2f4f4f;
+}
+
+/* Progress Bar */
+#progressBar {
+    transition: width 0.3s ease-in-out;
+}
+
+/* Hint Section */
+#hintSection {
+    background-color: #e6f3ff;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#hintButton {
+    transition: background-color 0.2s;
+}
+
+.dimmed {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .w-1 {
+        width: 100%;
+    }
+
+    #editor {
+        height: 50vh;
+    }
 }

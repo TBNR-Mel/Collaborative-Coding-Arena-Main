@@ -33,9 +33,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `sum` and takes two parameters."
                 },
                 hints: [
-                    "Name your function exactly `sum` with parameters `a` and `b`.",
-                    "Use the `+` operator to add `a` and `b` inside the function.",
-                    "Return the result directly without extra calculations."
+                    "Think about what it means to add two numbers. The function `sum(a, b)` needs to take two parameters, `a` and `b`, which can be any numbers (positive, negative, or zero). Your goal is to return their sum. Start by defining the function with the correct name and parameters.",
+                    "To add the numbers, use the `+` operator, which works for both integers and floating-point numbers in JavaScript. For example, if `a` is 1 and `b` is 2, you want to compute `1 + 2`. Consider how you can use the parameters `a` and `b` directly in your function body.",
+                    "The function needs to return the result of the addition. Use the `return` statement to send back the value of `a + b`. For instance, `return a + b;` will compute the sum and exit the function with that value. Make sure you don't include extra operations that could alter the result."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -58,9 +58,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `reverseString` and takes one parameter."
                 },
                 hints: [
-                    "Name your function `reverseString` and ensure it accepts a `str` parameter.",
-                    "Split the string into an array using `str.split('')`, then use `reverse()` to reverse the array.",
-                    "Join the array back into a string with `join('')` and return it."
+                    "To reverse a string, you need to rearrange its characters starting from the last one to the first. For example, 'hello' becomes 'olleh'. Consider how you might break the string into individual characters to manipulate them, perhaps using an array.",
+                    "In JavaScript, you can use `split('')` to convert a string into an array of characters. For instance, `'hello'.split('')` gives `['h', 'e', 'l', 'l', 'o']`. After splitting, you can use the `reverse()` method to reverse the array. Think about how to apply these methods in sequence.",
+                    "After reversing the array, you need to convert it back to a string. The `join('')` method combines array elements into a string with no separator. Chain these operations (`split`, `reverse`, `join`) in your function and return the result to complete the reversal."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -83,9 +83,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `fibonacci` and takes one parameter."
                 },
                 hints: [
-                    "Name your function `fibonacci` with a single parameter `n`.",
-                    "Use a loop starting with `a = 0`, `b = 1`, and iterate from `i = 2` to `n`.",
-                    "In each iteration, compute `temp = a + b`, update `a = b`, `b = temp`, and return `b`."
+                    "The Fibonacci sequence starts with 0, 1, and each subsequent number is the sum of the previous two (e.g., 0, 1, 1, 2, 3, 5, 8, ...). Since `n` is 0-based, `fibonacci(5)` should return 5 (the 6th number). Think about how to compute this iteratively or recursively.",
+                    "An iterative approach avoids recursion for better performance. Initialize two variables, say `a = 0` and `b = 1`, to represent the first two numbers. Use a loop to generate subsequent numbers by adding `a` and `b`, updating the variables each time. Consider how to track the loop up to `n`.",
+                    "In the loop, calculate the next Fibonacci number as `temp = a + b`. Then, shift the variables: set `a` to `b` and `b` to `temp`. Run the loop from `i = 2` to `n` (since `n = 0` returns 0, `n = 1` returns 1). Return `b` as the final result."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -108,9 +108,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `isPalindrome` and takes one parameter."
                 },
                 hints: [
-                    "Name your function `isPalindrome` and ensure it accepts a `str` parameter.",
-                    "Convert the string to lowercase and remove non-alphanumeric characters using `toLowerCase()` and a regex like `/[^a-z0-9]/g`.",
-                    "Compare the cleaned string with its reverse using `split('').reverse().join('')`."
+                    "A palindrome reads the same forwards and backwards, like 'racecar' or 'A man a plan a canal Panama'. First, consider how to handle case sensitivity (e.g., 'A' vs 'a') and non-alphanumeric characters (spaces, punctuation). You need to clean the string before checking.",
+                    "To clean the string, convert it to lowercase with `toLowerCase()` to treat 'A' and 'a' the same. Use `replace(/[^a-z0-9]/g, '')` to remove all characters that aren't letters or numbers. For example, 'A man a plan' becomes 'amanaplan'. Now, how can you check if this is a palindrome?",
+                    "Compare the cleaned string with its reverse. Use `split('')` to get an array of characters, `reverse()` to reverse it, and `join('')` to make it a string again. Check if the cleaned string equals its reverse using `===`. Return `true` if they match, `false` otherwise."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -133,9 +133,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `findMax` and takes one parameter."
                 },
                 hints: [
-                    "Name your function `findMax` and ensure it accepts an `arr` parameter.",
-                    "Iterate through the array or use `Math.max(...arr)` to find the largest value.",
-                    "If using a loop, initialize a variable with the first element and update it if a larger value is found."
+                    "Your goal is to find the largest number in an array, like `[1, 5, 3, 8, 2]` returning 8. Think about how to compare each element in the array to identify the largest one. You could loop through the array or use a built-in method.",
+                    "One approach is to use a loop. Start with the first element (`arr[0]`) as the initial maximum. Iterate through the array, and if you find an element larger than your current maximum, update it. Alternatively, JavaScript's `Math.max` can simplify this. How might you apply it to an array?",
+                    "Using `Math.max(...arr)` spreads the array into individual arguments, returning the largest. For example, `Math.max(1, 5, 3, 8, 2)` returns 8. If you use a loop, ensure you handle edge cases like a single-element array or negative numbers. Return the maximum value."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -160,9 +160,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `factorial` and takes one parameter."
                 },
                 hints: [
-                    "Define the function as `def factorial(n):` with proper indentation.",
-                    "Set the base case to return 1 if `n == 0`.",
-                    "Use recursion with `n * factorial(n - 1)` for other cases."
+                    "The factorial of a number `n` is the product of all positive integers up to `n` (e.g., `factorial(5)` is `5 * 4 * 3 * 2 * 1 = 120`). For `n = 0`, the factorial is 1. Consider whether a recursive or iterative approach would be clearer for computing this.",
+                    "A recursive solution is elegant for factorials. Define a base case: if `n` is 0, return 1. For other cases, the factorial is `n` multiplied by the factorial of `n-1`. Think about how to express this as `return n * factorial(n - 1)`.",
+                    "Ensure your recursion stops at the base case. For example, `factorial(3)` computes `3 * factorial(2)`, which is `3 * (2 * factorial(1))`, and so on, until `factorial(0)` returns 1. Check your indentation and base case to avoid infinite recursion."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -185,9 +185,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `is_prime` and takes one parameter."
                 },
                 hints: [
-                    "Define the function as `def is_prime(n):` with proper indentation.",
-                    "Return `False` if `n < 2`, as numbers less than 2 are not prime.",
-                    "Loop from 2 to `int(n ** 0.5) + 1` and check if `n` is divisible by `i`."
+                    "A prime number is greater than 1 and divisible only by 1 and itself. For example, 7 is prime because it's not divisible by any number from 2 to 6. Start by checking if `n` is less than 2, as those numbers (0, 1, negative) are not prime.",
+                    "To test if `n` is prime, check divisibility by numbers from 2 up to the square root of `n`. Why the square root? If `n` has a divisor larger than its square root, it must also have a smaller one we've already checked. Use `int(n ** 0.5) + 1` for the range.",
+                    "Set up a loop from 2 to `int(n ** 0.5) + 1`. For each `i`, if `n % i == 0`, return `False` (not prime). If no divisors are found, return `True`. For example, for `n = 7`, check 2 and 3; if neither divides evenly, 7 is prime."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -210,9 +210,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `list_sum` and takes one parameter."
                 },
                 hints: [
-                    "Define the function as `def list_sum(numbers):` with proper indentation.",
-                    "Use Python's built-in `sum(numbers)` function or a loop to add all elements.",
-                    "Return 0 if the list is empty."
+                    "Your goal is to add all numbers in a list, like `[1, 2, 3]` returning 6. The list might be empty (return 0) or contain negative numbers. Think about whether you need a loop or if Python has a built-in function to simplify this.",
+                    "Python's `sum()` function is perfect here: it takes a list and returns the total of its elements. For example, `sum([1, 2, 3])` returns 6. If you prefer a loop, initialize a variable to 0 and add each element. How would you handle an empty list?",
+                    "Using `sum(numbers)` is the most concise solution, automatically returning 0 for an empty list. If looping, use `total = 0`, then `for num in numbers: total += num`, and return `total`. Ensure your function handles all test cases, including `[-1, 1]` and `[]`."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -235,9 +235,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your function is named `binary_search` and takes two parameters."
                 },
                 hints: [
-                    "Define the function as `def binary_search(arr, target):` with two parameters.",
-                    "Initialize `left = 0` and `right = len(arr) - 1`, then use a while loop with `left <= right`.",
-                    "Calculate `mid = (left + right) // 2` and adjust `left` or `right` based on `arr[mid]` vs `target`."
+                    "Binary search is efficient for finding a `target` in a sorted list by halving the search range each step. For `[1, 2, 3, 4, 5]` and `target = 3`, you want to return index 2. Start by defining two pointers, `left` and `right`, to track the search range.",
+                    "Initialize `left = 0` and `right = len(arr) - 1`. Calculate the middle index as `mid = (left + right) // 2`. Check if `arr[mid]` equals the `target`. If not, decide whether to search the left or right half based on whether `arr[mid]` is less than or greater than `target`.",
+                    "In a loop, while `left <= right`, compute `mid`. If `arr[mid] == target`, return `mid`. If `arr[mid] < target`, set `left = mid + 1` to search the right half. If `arr[mid] > target`, set `right = mid - 1`. If the loop ends without finding `target`, return -1."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -262,9 +262,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your method is named `isEven` and returns a boolean."
                 },
                 hints: [
-                    "Define the method as `public boolean isEven(int n)`.",
-                    "Use the modulo operator `%` to check if `n` is divisible by 2.",
-                    "Return `n % 2 == 0` to indicate an even number."
+                    "An even number is divisible by 2 with no remainder, like 4 or 0. Your method takes an integer `n` and returns a boolean. Think about how to test divisibility in Java.",
+                    "The modulo operator `%` returns the remainder of division. For example, `4 % 2` is 0, indicating 4 is even. Use `n % 2` to check if the remainder is 0, which means `n` is even.",
+                    "Return the result of `n % 2 == 0` directly. This expression evaluates to `true` for even numbers (e.g., `4 % 2 == 0` is `true`) and `false` for odd numbers (e.g., `7 % 2 == 1` is `false`). Ensure your method signature is correct."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -287,9 +287,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your method is named `countVowels` and returns an int."
                 },
                 hints: [
-                    "Define the method as `public int countVowels(String s)`.",
-                    "Convert `s` to lowercase using `toLowerCase()` and iterate over each character.",
-                    "Check if each character is a vowel (`a`, `e`, `i`, `o`, `u`) and increment a counter."
+                    "You need to count vowels (a, e, i, o, u) in a string, ignoring case (e.g., 'A' counts as a vowel). For 'hello', the vowels are 'e' and 'o', so return 2. Consider how to iterate through the string and identify vowels.",
+                    "Convert the string to lowercase using `s.toLowerCase()` to treat 'A' and 'a' the same. Use a for-each loop over `s.toCharArray()` to check each character. How will you test if a character is a vowel?",
+                    "For each character, check if it matches 'a', 'e', 'i', 'o', or 'u' using `if (c == 'a' || c == 'e' || ... )`. Increment a counter for each match. Return the counter at the end. Handle empty strings by initializing the counter to 0."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -312,9 +312,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your method is named `squareNumber` and returns an int."
                 },
                 hints: [
-                    "Define the method as `public int squareNumber(int n)`.",
-                    "Multiply `n` by itself using the `*` operator.",
-                    "Return the result directly without extra calculations."
+                    "Squaring a number means multiplying it by itself, so `squareNumber(4)` returns `4 * 4 = 16`. The input `n` can be positive, negative, or zero. Think about the simplest way to compute this in Java.",
+                    "Use the multiplication operator `*`. For example, `n * n` computes the square. Ensure your method returns an `int`, as all test cases expect integer results, even for negative inputs (e.g., `-2 * -2 = 4`).",
+                    "Write `return n * n;` directly in the method body. This handles all cases, including `n = 0` (returns 0) and negative numbers. Double-check your method signature for the correct name and return type."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -337,9 +337,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure your method is named `longestWord` and returns a String."
                 },
                 hints: [
-                    "Define the method as `public String longestWord(String s)`.",
-                    "Split the string into words using `s.split(\" \")`.",
-                    "Loop through the words and track the one with the maximum length using `word.length()`."
+                    "You need to find the longest word in a string, like 'hello world' returning 'hello' (5 letters vs 5 for 'world', but 'hello' is first). Split the string into words and compare their lengths. How can you split a string in Java?",
+                    "Use `s.split(\" \")` to split the string into an array of words. Initialize a variable to store the longest word (start with an empty string). Loop through each word and check its length using `word.length()`. Update the longest word if the current one is longer.",
+                    "In a for-each loop, compare `word.length()` with the current longest word's length. If `word.length()` is greater, set the longest word to the current word. Return the longest word after the loop. Handle edge cases like a single word or equal-length words (return the first)."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -362,9 +362,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using an h1 tag with the specified style."
                 },
                 hints: [
-                    "Use an `<h1>` tag and set its content to 'Welcome'.",
-                    "Add a `style` attribute to the `<h1>` tag with `text-align: center;`.",
-                    "Ensure the tag is properly closed with `</h1>`."
+                    "Your goal is to create an `<h1>` heading with the text 'Welcome' that is centered on the page. In HTML, centering can be achieved with CSS. Think about how to apply CSS directly to the `<h1>` tag.",
+                    "Use the `style` attribute in the `<h1>` tag to apply CSS. The `text-align` property controls horizontal alignment. Set `style=\"text-align: center;\"` to center the text. Ensure the text inside the tag is exactly 'Welcome'.",
+                    "Write `<h1 style=\"text-align: center;\">Welcome</h1>`. The `style` attribute should contain `text-align: center;` (note the semicolon). Close the tag properly with `</h1>` to avoid syntax errors."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -385,9 +385,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using a form tag with the correct inputs."
                 },
                 hints: [
-                    "Start with a `<form>` tag and close it with `</form>`.",
-                    "Add an `<input>` tag with `type=\"text\"` for the text field.",
-                    "Add an `<input>` tag with `type=\"submit\"` for the submit button."
+                    "A form in HTML collects user input, like a text field and a submit button. The `<form>` tag wraps the input elements. Think about which HTML elements are needed for a text input and a button to submit the form.",
+                    "Use `<input>` tags inside `<form>`. For the text field, set `type=\"text\"` to allow user input. For the submit button, use `type=\"submit\"`. Add a `name` attribute to the text input for identification, like `name=\"input\"`.",
+                    "Structure your form like this: `<form><input type=\"text\" name=\"input\"><input type=\"submit\" value=\"Submit\"></form>`. The `value` attribute on the submit input sets the button's text. Ensure all tags are properly closed."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -408,9 +408,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using a div with three img tags."
                 },
                 hints: [
-                    "Use a `<div>` tag to wrap your gallery.",
-                    "Add three `<img>` tags, each with a `src` attribute (e.g., 'image1.jpg').",
-                    "Include an `alt` attribute for each image (e.g., 'Image 1')."
+                    "An image gallery displays multiple images, each with a source and description. Use a `<div>` to group three `<img>` tags. Each image needs a `src` attribute for the file path and an `alt` attribute for accessibility.",
+                    "For each `<img>` tag, set the `src` attribute to a file path, like `image1.jpg`. The `alt` attribute describes the image, e.g., `alt=\"Image 1\"`. This helps screen readers and is required for valid HTML.",
+                    "Write `<div><img src=\"image1.jpg\" alt=\"Image 1\"><img src=\"image2.jpg\" alt=\"Image 2\"><img src=\"image3.jpg\" alt=\"Image 3\"></div>`. Ensure each `src` and `alt` is unique and all tags are closed properly."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -431,9 +431,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using a nav tag with three links."
                 },
                 hints: [
-                    "Use a `<nav>` tag to wrap your navigation bar.",
-                    "Add three `<a>` tags, each with an `href` attribute (e.g., 'home.html').",
-                    "Include text inside each `<a>` tag (e.g., 'Home') and close with `</a>`."
+                    "A navigation bar provides links to different pages, wrapped in a `<nav>` tag. You need three `<a>` tags, each with an `href` attribute pointing to a page. Think about typical navigation links like 'Home' or 'About'.",
+                    "Each `<a>` tag needs an `href` attribute, like `href=\"home.html\"`, and text content, like `Home`. Place these inside `<nav>`. For example, `<a href=\"home.html\">Home</a>` creates a clickable link.",
+                    "Write `<nav><a href=\"home.html\">Home</a><a href=\"about.html\">About</a><a href=\"contact.html\">Contact</a></nav>`. Ensure each `href` points to a valid page name and that tags are properly closed."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -456,9 +456,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're styling a div with the correct properties."
                 },
                 hints: [
-                    "Use the `div` selector followed by curly braces `{}`.",
-                    "Set `background-color: red;` inside the braces.",
-                    "Add `width: 100px;` and `height: 100px;` with proper semicolons."
+                    "You need to style a `<div>` to have a red background and a size of 100px by 100px. In CSS, you target a `div` with the `div` selector and use properties to set color and dimensions.",
+                    "Use `background-color: red;` to set the background. For size, use `width: 100px;` and `height: 100px;`. Each property needs a semicolon. Think about how these properties affect the div's appearance.",
+                    "Write `div { background-color: red; width: 100px; height: 100px; }`. Ensure all properties are inside the curly braces and separated by semicolons. This creates a red square div."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -479,9 +479,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using the div:hover selector."
                 },
                 hints: [
-                    "Use the `div:hover` selector to target the hover state.",
-                    "Set `background-color: blue;` inside the `div:hover` block.",
-                    "Ensure the syntax is `div:hover {}` with no spaces in `:hover`."
+                    "The goal is to change a div's background to blue when the mouse hovers over it. CSS uses pseudo-classes to handle events like hovering. Think about which pseudo-class detects a mouse hover.",
+                    "Use the `:hover` pseudo-class with the `div` selector, like `div:hover`. Inside the block, set `background-color: blue;` to change the background when the mouse is over the div.",
+                    "Write `div:hover { background-color: blue; }`. The `:hover` pseudo-class triggers only when the mouse pointer is over the div. Ensure the property is correctly formatted with a semicolon."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -502,9 +502,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're styling a div with the correct centering properties."
                 },
                 hints: [
-                    "Use the `div` selector followed by curly braces `{}`.",
-                    "Set `display: flex;` to enable flexbox centering.",
-                    "Add `justify-content: center;` and `align-items: center;` to center the div."
+                    "Centering a div both horizontally and vertically within its parent requires CSS layout techniques. Flexbox is a great choice because it simplifies centering. Consider how to set up the parent div to use flexbox.",
+                    "Set `display: flex;` on the div to enable flexbox. Use `justify-content: center;` for horizontal centering and `align-items: center;` for vertical centering. These properties work together to position the div's content.",
+                    "Write `div { display: flex; justify-content: center; align-items: center; }`. This assumes the div is the parent containing content to center. If centering the div itself, ensure its parent has `display: flex` and the same properties."
                 ],
                 points: 100,
                 difficulty: "Easy",
@@ -525,9 +525,9 @@ require(['vs/editor/editor.main'], function () {
                     wrongFunctionName: "Ensure you're using the button:hover selector."
                 },
                 hints: [
-                    "Use the `button:hover` selector to target the hover state.",
-                    "Set `transform: scale(1.2);` to increase the button size by 20%.",
-                    "Ensure the transform property is inside the `button:hover` block."
+                    "You want a button to grow to 1.2 times its size when hovered. CSS transformations can change an element's size. Think about which transform function scales an element uniformly.",
+                    "Use the `transform` property with the `scale()` function. `scale(1.2)` increases the button's size by 20%. Apply this in a `button:hover` block to trigger the effect only on hover.",
+                    "Write `button:hover { transform: scale(1.2); }`. The `scale(1.2)` function scales both width and height. Ensure the syntax is correct, with parentheses and a semicolon."
                 ],
                 points: 150,
                 difficulty: "Medium",
@@ -545,6 +545,7 @@ require(['vs/editor/editor.main'], function () {
     let hintStep = 0;
     let totalScore = 0;
     let completedChallenges = {};
+    let hintsRequested = false; // Track if hints have been requested for the current challenge
 
     // Load Challenge
     function loadChallenge(index, language) {
@@ -561,8 +562,12 @@ require(['vs/editor/editor.main'], function () {
         document.getElementById("validationFeedback").classList.add("hidden");
         document.getElementById("viewSolution").classList.add("hidden");
         document.getElementById("hintSection").classList.add("hidden");
-        document.getElementById("getHint").textContent = "Get Hint"; // Reset hint button text
-        document.getElementById("getHint").classList.add("hidden");
+        document.getElementById("hintButton").classList.remove("hidden"); // Show hint button on load
+        document.getElementById("prevHint").classList.add("hidden"); // Hide previous hint button
+        document.getElementById("nextHint").classList.add("hidden"); // Hide next hint button
+        document.getElementById("hintButton").textContent = "Get Hint"; // Reset hint button text
+        document.getElementById("hintStep").textContent = "1"; // Reset hint step display
+        document.getElementById("hintText").textContent = ""; // Clear hint text
         document.getElementById("backChallenge").disabled = index === 0;
         document.getElementById("backChallenge").classList.toggle("dimmed", index === 0);
         document.getElementById("nextChallenge").disabled = index === filteredChallenges.length - 1;
@@ -572,6 +577,7 @@ require(['vs/editor/editor.main'], function () {
         failedAttempts = 0;
         lastSubmissionFailed = false;
         hintStep = 0;
+        hintsRequested = false; // Reset hints requested flag
         updateProgressBar();
         startTimer(challenge.timeLimit);
     }
@@ -590,7 +596,7 @@ require(['vs/editor/editor.main'], function () {
                 document.getElementById("submitCode").disabled = true;
                 document.getElementById("validateCode").disabled = true;
                 if (lastSubmissionFailed) {
-                    document.getElementById("getHint").classList.remove("hidden");
+                    document.getElementById("hintButton").classList.remove("hidden");
                 }
             }
         }, 1000);
@@ -788,10 +794,10 @@ require(['vs/editor/editor.main'], function () {
             failedAttempts++;
             totalScore = Math.max(0, totalScore - 10);
             results = `<p class="text-red-500">Some tests failed: ${feedback}</p>${results}`;
+            document.getElementById("hintButton").classList.remove("hidden");
             if (failedAttempts >= 3) {
                 document.getElementById("viewSolution").classList.remove("hidden");
             }
-            document.getElementById("getHint").classList.remove("hidden");
         } else {
             if (!completedChallenges[currentLanguage]?.includes(currentChallengeIndex)) {
                 totalScore += challenge.points;
@@ -801,7 +807,10 @@ require(['vs/editor/editor.main'], function () {
             results = `<p class="text-green-500">All tests passed! Well done! (+${challenge.points} points)</p>${results}`;
             failedAttempts = 0;
             document.getElementById("viewSolution").classList.add("hidden");
-            document.getElementById("getHint").classList.add("hidden");
+            document.getElementById("hintButton").classList.add("hidden");
+            document.getElementById("hintSection").classList.add("hidden");
+            document.getElementById("prevHint").classList.add("hidden");
+            document.getElementById("nextHint").classList.add("hidden");
         }
 
         document.getElementById("testResults").innerHTML = results;
@@ -862,12 +871,11 @@ require(['vs/editor/editor.main'], function () {
         return null;
     }
 
-    // Get Hint
-    function getHint() {
+    // Show Hint
+    function showHint(step) {
         const challenge = challenges[currentLanguage][currentChallengeIndex];
         const code = editor.getValue();
-        let hint = challenge.hints[hintStep];
-        const pointDeduction = [10, 20, 30][hintStep];
+        let hint = challenge.hints[step];
 
         try {
             if (currentLanguage === "javascript") {
@@ -883,7 +891,7 @@ require(['vs/editor/editor.main'], function () {
                         }
                     });
                     if (anyFailed) {
-                        hint = challenge.hints[hintStep];
+                        hint = challenge.hints[step];
                     }
                 }
             } else if (currentLanguage === "python" && !code.includes(challenge.title.toLowerCase().replace(" ", "_"))) {
@@ -892,7 +900,7 @@ require(['vs/editor/editor.main'], function () {
                 hint = challenge.hints[0];
             } else if (currentLanguage === "html" || currentLanguage === "css") {
                 if (!challenge.testCases[0].expected.test(code)) {
-                    hint = challenge.hints[hintStep];
+                    hint = challenge.hints[step];
                 }
             }
         } catch (e) {
@@ -901,13 +909,61 @@ require(['vs/editor/editor.main'], function () {
 
         document.getElementById("hintSection").classList.remove("hidden");
         document.getElementById("hintText").textContent = hint;
-        document.getElementById("hintStep").textContent = hintStep + 1;
-        totalScore = Math.max(0, totalScore - pointDeduction);
-        document.getElementById("totalScore").textContent = totalScore;
-        hintStep = (hintStep + 1) % 3;
-        document.getElementById("getHint").textContent = hintStep === 0 ? "Get Hint" : "Next Hint";
-        if (hintStep === 0) {
-            document.getElementById("getHint").classList.add("hidden");
+        document.getElementById("hintStep").textContent = step + 1;
+        document.getElementById("prevHint").classList.remove("hidden");
+        document.getElementById("nextHint").classList.remove("hidden");
+        // Update navigation button states
+        document.getElementById("prevHint").disabled = step === 0;
+        document.getElementById("prevHint").classList.toggle("dimmed", step === 0);
+        document.getElementById("nextHint").disabled = step === 2;
+        document.getElementById("nextHint").classList.toggle("dimmed", step === 2);
+    }
+
+    // Get Hint (Toggle Hint Section)
+    function getHint() {
+        const challenge = challenges[currentLanguage][currentChallengeIndex];
+        const hintSection = document.getElementById("hintSection");
+        if (hintSection.classList.contains("hidden")) {
+            // Show hint section
+            if (!hintsRequested) {
+                const pointDeduction = hintStep < 3 ? [5, 10, 15][hintStep] : 0;
+                if (pointDeduction > 0) {
+                    totalScore = Math.max(0, totalScore - pointDeduction);
+                    document.getElementById("totalScore").textContent = totalScore;
+                }
+                hintsRequested = true; // Mark hints as requested for this challenge
+            }
+            showHint(hintStep); // Show current hint step
+            document.getElementById("hintButton").textContent = "Hide Hint";
+        } else {
+            // Hide hint section
+            hintSection.classList.add("hidden");
+            document.getElementById("prevHint").classList.add("hidden");
+            document.getElementById("nextHint").classList.add("hidden");
+            document.getElementById("hintButton").textContent = "Get Hint";
+            // Reset navigation button states
+            document.getElementById("prevHint").disabled = false;
+            document.getElementById("prevHint").classList.remove("dimmed");
+            document.getElementById("nextHint").disabled = false;
+            document.getElementById("nextHint").classList.remove("dimmed");
+        }
+    }
+
+    // Previous Hint
+    function prevHint() {
+        if (hintStep > 0) {
+            hintStep--; // Move to previous hint: 2 -> 1, 1 -> 0
+            showHint(hintStep);
+            document.getElementById("hintButton").textContent = "Hide Hint"; // Keep as "Hide Hint" since section is visible
+        }
+    }
+
+    // Next Hint
+    function nextHint() {
+        if (hintStep < 2) {
+            hintStep++; // Move to next hint: 0 -> 1, 1 -> 2
+            showHint(hintStep);
+            document.getElementById("hintButton").textContent = "Hide Hint"; // Keep as "Hide Hint" since section is visible
         }
     }
 
@@ -917,10 +973,12 @@ require(['vs/editor/editor.main'], function () {
         editor.setValue(challenge.solution);
         document.getElementById("testResults").innerHTML = `<p class='text-yellow-500'>Solution displayed:</p>${highlightCode(challenge.solution, currentLanguage)}<p class='text-yellow-500'>Try to understand it and move to the next challenge.</p>`;
         document.getElementById("viewSolution").classList.add("hidden");
-        document.getElementById("getHint").classList.add("hidden");
+        document.getElementById("hintButton").classList.add("hidden");
         document.getElementById("hintSection").classList.add("hidden");
+        document.getElementById("prevHint").classList.add("hidden");
+        document.getElementById("nextHint").classList.add("hidden");
         document.getElementById("validationFeedback").classList.add("hidden");
-        document.getElementById("getHint").textContent = "Get Hint";
+        document.getElementById("hintButton").textContent = "Get Hint";
         clearInterval(timer);
         totalScore = Math.max(0, totalScore - 50);
         document.getElementById("totalScore").textContent = totalScore;
@@ -971,7 +1029,9 @@ require(['vs/editor/editor.main'], function () {
             loadChallenge(currentChallengeIndex, currentLanguage);
         }
     });
-    document.getElementById("getHint").addEventListener("click", getHint);
+    document.getElementById("hintButton").addEventListener("click", getHint);
+    document.getElementById("prevHint").addEventListener("click", prevHint);
+    document.getElementById("nextHint").addEventListener("click", nextHint);
     document.getElementById("viewSolution").addEventListener("click", showSolution);
 
     // Load first challenge

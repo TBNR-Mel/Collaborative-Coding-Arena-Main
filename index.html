@@ -63,12 +63,16 @@
             <div class="mt-4 flex space-x-2">
                 <button id="backChallenge" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Back</button>
                 <button id="nextChallenge" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Next Challenge</button>
-                <button id="getHint" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Get Hint</button>
+                <button id="hintButton" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Get Hint</button>
                 <button id="viewSolution" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 hidden">View Solution</button>
             </div>
             <div id="hintSection" class="mt-4 hidden">
                 <h4 class="text-lg font-semibold">Hint (Step <span id="hintStep">1</span>/3)</h4>
                 <p id="hintText"></p>
+                <div class="mt-2 flex space-x-2">
+                    <button id="prevHint" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Previous Hint</button>
+                    <button id="nextHint" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">Next Hint</button>
+                </div>
             </div>
         </div>
     </div>
