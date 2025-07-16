@@ -280,7 +280,7 @@ require(['vs/editor/editor.main'], function () {
                     { input: [0], expected: 1 },
                     { input: [3], expected: 6 }
                 ],
-                timeLimit: 60,
+                timeLimit: 980,
                 solution: "def factorial(n):\n    if n == 0:\n        return 1\n    return n * factorial(n - 1)",
                 boilerplate: "def factorial(n):\n    # Your code here\n",
                 feedback: {
