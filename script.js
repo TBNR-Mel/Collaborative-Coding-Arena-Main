@@ -561,13 +561,20 @@ require(['vs/editor/editor.main'], function () {
         document.getElementById("testResults").innerHTML = "";
         document.getElementById("validationFeedback").classList.add("hidden");
         document.getElementById("viewSolution").classList.add("hidden");
+        // Reset hint system
+        hintStep = 0; // Explicitly reset hintStep to 0
+        hintsRequested = false; // Reset hints requested flag
         document.getElementById("hintSection").classList.add("hidden");
-        document.getElementById("hintButton").classList.remove("hidden"); // Show hint button on load
-        document.getElementById("prevHint").classList.add("hidden"); // Hide previous hint button
-        document.getElementById("nextHint").classList.add("hidden"); // Hide next hint button
+        document.getElementById("hintButton").classList.remove("hidden"); // Show hint button
         document.getElementById("hintButton").textContent = "Get Hint"; // Reset hint button text
         document.getElementById("hintStep").textContent = "1"; // Reset hint step display
         document.getElementById("hintText").textContent = ""; // Clear hint text
+        document.getElementById("prevHint").classList.add("hidden"); // Hide previous hint button
+        document.getElementById("prevHint").disabled = true; // Disable previous hint button
+        document.getElementById("prevHint").classList.add("dimmed"); // Dim previous hint button
+        document.getElementById("nextHint").classList.add("hidden"); // Hide next hint button
+        document.getElementById("nextHint").disabled = false; // Enable next hint button
+        document.getElementById("nextHint").classList.remove("dimmed"); // Undim next hint button
         document.getElementById("backChallenge").disabled = index === 0;
         document.getElementById("backChallenge").classList.toggle("dimmed", index === 0);
         document.getElementById("nextChallenge").disabled = index === filteredChallenges.length - 1;
@@ -576,8 +583,6 @@ require(['vs/editor/editor.main'], function () {
         editor.getModel().setLanguage(language);
         failedAttempts = 0;
         lastSubmissionFailed = false;
-        hintStep = 0;
-        hintsRequested = false; // Reset hints requested flag
         updateProgressBar();
         startTimer(challenge.timeLimit);
     }
@@ -1018,11 +1023,13 @@ require(['vs/editor/editor.main'], function () {
 
     document.getElementById("submitCode").addEventListener("click", verifyCode);
     document.getElementById("validateCode").addEventListener("click", validateCode);
+    
     document.getElementById("nextChallenge").addEventListener("click", () => {
         const filteredChallenges = filterChallenges(document.getElementById("categorySelect").value);
         currentChallengeIndex = (currentChallengeIndex + 1) % filteredChallenges.length;
         loadChallenge(currentChallengeIndex, currentLanguage);
     });
+
     document.getElementById("backChallenge").addEventListener("click", () => {
         if (currentChallengeIndex > 0) {
             currentChallengeIndex--;
