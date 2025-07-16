@@ -17,129 +17,129 @@ require(['vs/editor/editor.main'], function () {
     const challenges = {
         javascript: [
             {
-                title: "Sum of Two Numbers",
-                description: "Write a function `sum(a, b)` that returns the sum of two numbers.",
+                title: "Add One",
+                description: "Make a function called `addOne(num)` that adds 1 to a number. Like if you have 3 cookies, you get 1 more to make 4!",
                 testCases: [
-                    { input: [1, 2], expected: 3 },
-                    { input: [-1, 1], expected: 0 },
-                    { input: [5, 5], expected: 10 }
+                    { input: [3], expected: 4 },
+                    { input: [1], expected: 2 },
+                    { input: [0], expected: 1 }
                 ],
                 timeLimit: 60,
-                solution: "function sum(a, b) { return a + b; }",
-                boilerplate: "function sum(a, b) {\n    // Your code here\n}",
+                solution: "function addOne(num) { return num + 1; }",
+                boilerplate: "function addOne(num) {\n    // Your code here\n}",
                 feedback: {
-                    wrongOutput: "Check your arithmetic operation. Ensure you're adding the two numbers correctly.",
-                    syntaxError: "There's a syntax error in your code. Check for missing parentheses, incorrect operators, or undefined variables.",
-                    wrongFunctionName: "Ensure your function is named `sum` and takes two parameters."
+                    wrongOutput: "Oops! Make sure you're adding 1 to the number, like 3 + 1 makes 4.",
+                    syntaxError: "There's a tiny mistake! Check if you forgot the + or wrote something extra.",
+                    wrongFunctionName: "Make sure your function is named `addOne` and takes a number."
                 },
                 hints: [
-                    "Think about what it means to add two numbers. The function `sum(a, b)` needs to take two parameters, `a` and `b`, which can be any numbers (positive, negative, or zero). Your goal is to return their sum. Start by defining the function with the correct name and parameters.",
-                    "To add the numbers, use the `+` operator, which works for both integers and floating-point numbers in JavaScript. For example, if `a` is 1 and `b` is 2, you want to compute `1 + 2`. Consider how you can use the parameters `a` and `b` directly in your function body.",
-                    "The function needs to return the result of the addition. Use the `return` statement to send back the value of `a + b`. For instance, `return a + b;` will compute the sum and exit the function with that value. Make sure you don't include extra operations that could alter the result."
+                    "This is like getting one extra cookie! The function gets a number, like 3, and you need to add 1 to it to make 4.",
+                    "Use the `+` sign to add 1. Try writing `num + 1` inside your function to make the number bigger by 1.",
+                    "To give the answer back, use `return`. Write `return num + 1;` to add 1 to the number and share it."
                 ],
                 points: 100,
                 difficulty: "Easy",
                 category: "Basics"
             },
             {
-                title: "Reverse a String",
-                description: "Write a function `reverseString(str)` that returns the reversed string.",
+                title: "Say Hello",
+                description: "Make a function called `sayHello()` that says 'hello'. It’s like waving to a friend!",
                 testCases: [
-                    { input: ["hello"], expected: "olleh" },
-                    { input: ["world"], expected: "dlrow" },
-                    { input: [""], expected: "" }
+                    { input: [], expected: "hello" },
+                    { input: [], expected: "hello" },
+                    { input: [], expected: "hello" }
                 ],
                 timeLimit: 60,
-                solution: "function reverseString(str) { return str.split('').reverse().join(''); }",
-                boilerplate: "function reverseString(str) {\n    // Your code here\n}",
+                solution: "function sayHello() { return 'hello'; }",
+                boilerplate: "function sayHello() {\n    // Your code here\n}",
                 feedback: {
-                    wrongOutput: "Your function is not reversing the string correctly. Try splitting the string into an array, reversing it, and joining it back.",
-                    syntaxError: "There's a syntax error in your code. Check for incorrect string methods or syntax issues.",
-                    wrongFunctionName: "Ensure your function is named `reverseString` and takes one parameter."
+                    wrongOutput: "Oops! Make sure you're giving back the word 'hello' with no extra stuff.",
+                    syntaxError: "There's a small mistake! Check if you forgot the quotes around 'hello'.",
+                    wrongFunctionName: "Make sure your function is named `sayHello` and doesn't need any inputs."
                 },
                 hints: [
-                    "To reverse a string, you need to rearrange its characters starting from the last one to the first. For example, 'hello' becomes 'olleh'. Consider how you might break the string into individual characters to manipulate them, perhaps using an array.",
-                    "In JavaScript, you can use `split('')` to convert a string into an array of characters. For instance, `'hello'.split('')` gives `['h', 'e', 'l', 'l', 'o']`. After splitting, you can use the `reverse()` method to reverse the array. Think about how to apply these methods in sequence.",
-                    "After reversing the array, you need to convert it back to a string. The `join('')` method combines array elements into a string with no separator. Chain these operations (`split`, `reverse`, `join`) in your function and return the result to complete the reversal."
+                    "This is like saying hi to someone! The function just needs to give back the word 'hello'.",
+                    "Write 'hello' with quotes like `'hello'` to make it a word. Put that in your function!",
+                    "Use `return` to give the word back. Write `return 'hello';` to say 'hello' in your code."
                 ],
                 points: 100,
                 difficulty: "Easy",
                 category: "Basics"
             },
             {
-                title: "Fibonacci Sequence",
-                description: "Write a function `fibonacci(n)` that returns the nth number in the Fibonacci sequence (0-based index).",
+                title: "Take Away",
+                description: "Make a function called `takeAway(num)` that takes 1 away from a number. Like if you have 5 balloons, one pops, so you have 4.",
                 testCases: [
-                    { input: [5], expected: 5 },
-                    { input: [0], expected: 0 },
-                    { input: [3], expected: 2 }
-                ],
-                timeLimit: 90,
-                solution: "function fibonacci(n) { if (n <= 1) return n; let a = 0, b = 1; for (let i = 2; i <= n; i++) { let temp = a + b; a = b; b = temp; } return b; }",
-                boilerplate: "function fibonacci(n) {\n    // Your code here\n}",
-                feedback: {
-                    wrongOutput: "Check your loop or recursive logic for generating Fibonacci numbers.",
-                    syntaxError: "Ensure proper syntax for loops or recursion.",
-                    wrongFunctionName: "Ensure your function is named `fibonacci` and takes one parameter."
-                },
-                hints: [
-                    "The Fibonacci sequence starts with 0, 1, and each subsequent number is the sum of the previous two (e.g., 0, 1, 1, 2, 3, 5, 8, ...). Since `n` is 0-based, `fibonacci(5)` should return 5 (the 6th number). Think about how to compute this iteratively or recursively.",
-                    "An iterative approach avoids recursion for better performance. Initialize two variables, say `a = 0` and `b = 1`, to represent the first two numbers. Use a loop to generate subsequent numbers by adding `a` and `b`, updating the variables each time. Consider how to track the loop up to `n`.",
-                    "In the loop, calculate the next Fibonacci number as `temp = a + b`. Then, shift the variables: set `a` to `b` and `b` to `temp`. Run the loop from `i = 2` to `n` (since `n = 0` returns 0, `n = 1` returns 1). Return `b` as the final result."
-                ],
-                points: 150,
-                difficulty: "Medium",
-                category: "Algorithms"
-            },
-            {
-                title: "Palindrome Check",
-                description: "Write a function `isPalindrome(str)` that returns true if the string is a palindrome (reads the same forwards and backwards), false otherwise.",
-                testCases: [
-                    { input: ["racecar"], expected: true },
-                    { input: ["hello"], expected: false },
-                    { input: ["A man a plan a canal Panama"], expected: true }
+                    { input: [5], expected: 4 },
+                    { input: [2], expected: 1 },
+                    { input: [1], expected: 0 }
                 ],
                 timeLimit: 60,
-                solution: "function isPalindrome(str) { str = str.toLowerCase().replace(/[^a-z0-9]/g, ''); return str === str.split('').reverse().join(''); }",
-                boilerplate: "function isPalindrome(str) {\n    // Your code here\n}",
+                solution: "function takeAway(num) { return num - 1; }",
+                boilerplate: "function takeAway(num) {\n    // Your code here\n}",
                 feedback: {
-                    wrongOutput: "Check your string comparison. Ensure you're handling case and non-alphanumeric characters correctly.",
-                    syntaxError: "There's a syntax error in your code. Check for incorrect string methods or syntax issues.",
-                    wrongFunctionName: "Ensure your function is named `isPalindrome` and takes one parameter."
+                    wrongOutput: "Oops! Make sure you're taking 1 away, like 5 - 1 makes 4.",
+                    syntaxError: "There's a tiny mistake! Check if you used - instead of something else.",
+                    wrongFunctionName: "Make sure your function is named `takeAway` and takes a number."
                 },
                 hints: [
-                    "A palindrome reads the same forwards and backwards, like 'racecar' or 'A man a plan a canal Panama'. First, consider how to handle case sensitivity (e.g., 'A' vs 'a') and non-alphanumeric characters (spaces, punctuation). You need to clean the string before checking.",
-                    "To clean the string, convert it to lowercase with `toLowerCase()` to treat 'A' and 'a' the same. Use `replace(/[^a-z0-9]/g, '')` to remove all characters that aren't letters or numbers. For example, 'A man a plan' becomes 'amanaplan'. Now, how can you check if this is a palindrome?",
-                    "Compare the cleaned string with its reverse. Use `split('')` to get an array of characters, `reverse()` to reverse it, and `join('')` to make it a string again. Check if the cleaned string equals its reverse using `===`. Return `true` if they match, `false` otherwise."
+                    "Imagine you have balloons, like 5, and one pops. You want to know how many are left. This function takes a number and takes 1 away.",
+                    "Use the `-` sign to take away 1. Write `num - 1` in your function to make the number smaller by 1.",
+                    "To give the answer, use `return`. Write `return num - 1;` to take 1 away and share the new number."
                 ],
                 points: 100,
                 difficulty: "Easy",
                 category: "Basics"
             },
             {
-                title: "Array Max",
-                description: "Write a function `findMax(arr)` that returns the maximum value in an array of numbers.",
+                title: "Is Five",
+                description: "Make a function called `isFive(num)` that checks if a number is 5. It’s like asking if you have exactly 5 toys!",
                 testCases: [
-                    { input: [[1, 5, 3, 8, 2]], expected: 8 },
-                    { input: [[-1, -5, -2]], expected: -1 },
-                    { input: [[10]], expected: 10 }
+                    { input: [5], expected: true },
+                    { input: [3], expected: false },
+                    { input: [6], expected: false }
                 ],
-                timeLimit: 90,
-                solution: "function findMax(arr) { return Math.max(...arr); }",
-                boilerplate: "function findMax(arr) {\n    // Your code here\n}",
+                timeLimit: 60,
+                solution: "function isFive(num) { return num === 5; }",
+                boilerplate: "function isFive(num) {\n    // Your code here\n}",
                 feedback: {
-                    wrongOutput: "Check your logic for finding the maximum value. Ensure you're comparing all array elements.",
-                    syntaxError: "There's a syntax error in your code. Check for incorrect loop or array access syntax.",
-                    wrongFunctionName: "Ensure your function is named `findMax` and takes one parameter."
+                    wrongOutput: "Hmm, check if you're testing if the number is exactly 5, like num === 5.",
+                    syntaxError: "There's a small mistake! Check if you used === or wrote something extra.",
+                    wrongFunctionName: "Make sure your function is named `isFive` and takes a number."
                 },
                 hints: [
-                    "Your goal is to find the largest number in an array, like `[1, 5, 3, 8, 2]` returning 8. Think about how to compare each element in the array to identify the largest one. You could loop through the array or use a built-in method.",
-                    "One approach is to use a loop. Start with the first element (`arr[0]`) as the initial maximum. Iterate through the array, and if you find an element larger than your current maximum, update it. Alternatively, JavaScript's `Math.max` can simplify this. How might you apply it to an array?",
-                    "Using `Math.max(...arr)` spreads the array into individual arguments, returning the largest. For example, `Math.max(1, 5, 3, 8, 2)` returns 8. If you use a loop, ensure you handle edge cases like a single-element array or negative numbers. Return the maximum value."
+                    "This is like checking if you have exactly 5 toys. The function gets a number and says `true` if it’s 5, or `false` if it’s not.",
+                    "Use `===` to check if the number is 5. Write `num === 5` to see if the number matches 5 exactly.",
+                    "Use `return` to give the answer. Write `return num === 5;` to say `true` for 5 and `false` for other numbers."
                 ],
-                points: 150,
-                difficulty: "Medium",
-                category: "Algorithms"
+                points: 100,
+                difficulty: "Easy",
+                category: "Basics"
+            },
+            {
+                title: "Bigger Than Three",
+                description: "Make a function called `biggerThanThree(num)` that checks if a number is bigger than 3. Like checking if you have more than 3 candies!",
+                testCases: [
+                    { input: [4], expected: true },
+                    { input: [3], expected: false },
+                    { input: [2], expected: false }
+                ],
+                timeLimit: 60,
+                solution: "function biggerThanThree(num) { return num > 3; }",
+                boilerplate: "function biggerThanThree(num) {\n    // Your code here\n}",
+                feedback: {
+                    wrongOutput: "Oops! Make sure you're checking if the number is bigger than 3, like 4 is bigger but 3 isn’t.",
+                    syntaxError: "There's a tiny mistake! Check if you used > or wrote something extra.",
+                    wrongFunctionName: "Make sure your function is named `biggerThanThree` and takes a number."
+                },
+                hints: [
+                    "Imagine you have candies and want to know if you have more than 3. This function checks if a number is bigger than 3 and says `true` or `false`.",
+                    "Use the `>` sign to check if a number is bigger than 3. Write `num > 3` to see if the number is more than 3.",
+                    "Use `return` to give the answer. Write `return num > 3;` to say `true` if the number is bigger than 3, or `false` if it’s not."
+                ],
+                points: 100,
+                difficulty: "Easy",
+                category: "Basics"
             }
         ],
         python: [
