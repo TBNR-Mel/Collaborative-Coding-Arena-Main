@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coding Challenges Platform</title>
+    <title>Code Arena</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <header>
-            <h1>Coding Challenges</h1>
+            <h1>Code Arena</h1>
             <div class="score-timer">
                 <span id="totalScore">0</span> Points | <span id="timeRemaining"></span>
             </div>
@@ -19,44 +21,52 @@
         </div>
         <main>
             <div class="challenge-section">
-                <h2 id="challengeTitle"></h2>
-                <p id="challengeDescription"></p>
-                <p id="challengeDifficulty"></p>
-                <div class="controls">
-                    <select id="languageSelect">
-                        <option value="javascript">JavaScript</option>
-                        <option value="python">Python</option>
-                        <option value="java">Java</option>
-                        <option value="html">HTML</option>
-                        <option value="css">CSS</option>
-                    </select>
-                    <select id="categorySelect">
-                        <option value="all">All Categories</option>
-                        <option value="Basics">Basics</option>
-                        <option value="Algorithms">Algorithms</option>
-                        <option value="Web Development">Web Development</option>
-                    </select>
-                    <button id="backChallenge" class="control-btn">Back</button>
-                    <button id="nextChallenge" class="control-btn">Next</button>
+                <div>
+                    <div class="controls">
+                        <select id="languageSelect">
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                            <option value="java">Java</option>
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                        </select>
+                        <select id="categorySelect">
+                            <option value="all">All Categories</option>
+                            <option value="Basics">Basics</option>
+                            <option value="Algorithms">Algorithms</option>
+                            <option value="Web Development">Web Development</option>
+                        </select>
+                        <button id="backChallenge" class="control-btn">Back</button>
+                        <button id="nextChallenge" class="control-btn">Next</button>
+                    </div>
+                    <div id="editor"></div>
                 </div>
-                <div id="editor"></div>
-                <div class="action-buttons">
-                    <button id="validateCode" class="action-btn">Validate Code</button>
-                    <button id="submitCode" class="action-btn">Submit Code</button>
-                    <button id="hintButton" class="action-btn">Get Hint</button>
-                    <button id="viewSolution" class="action-btn hidden">View Solution</button>
+                <div>
+                    <div class="challenge-details">
+                        <div>
+                            <h2 id="challengeTitle"></h2>
+                            <p id="challengeDescription"></p>
+                            <p id="challengeDifficulty"></p>
+                        </div>
+                        <div class="action-buttons">
+                            <button id="submitCode" class="action-btn">Submit Code</button>
+                            <button id="hintButton" class="action-btn">Get Hint</button>
+                            <button id="viewSolution" class="action-btn hidden">View Solution</button>
+                        </div>
+                    </div>
+                    <div id="hintSection" class="hint-section hidden">
+                        <p>Hint <span id="hintStep">1</span>/3: <span id="hintText"></span></p>
+                        <button id="prevHint" class="hint-btn hidden">Previous</button>
+                        <button id="nextHint" class="hint-btn hidden">Next</button>
+                    </div>
+                    <div id="validationFeedback" class="feedback hidden"></div>
+                    <div id="testResults"></div>
                 </div>
-                <div id="hintSection" class="hint-section hidden">
-                    <p>Hint <span id="hintStep">1</span>/3: <span id="hintText"></span></p>
-                    <button id="prevHint" class="hint-btn hidden">Previous</button>
-                    <button id="nextHint" class="hint-btn hidden">Next</button>
-                </div>
-                <div id="validationFeedback" class="feedback hidden"></div>
-                <div id="testResults"></div>
             </div>
         </main>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

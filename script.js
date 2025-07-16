@@ -16,131 +16,260 @@ require(['vs/editor/editor.main'], function () {
     // Challenge Data
     const challenges = {
         javascript: [
-            {
-                title: "Add One",
-                description: "Make a function called `addOne(num)` that adds 1 to a number. Like if you have 3 cookies, you get 1 more to make 4!",
-                testCases: [
-                    { input: [3], expected: 4 },
-                    { input: [1], expected: 2 },
-                    { input: [0], expected: 1 }
-                ],
-                timeLimit: 60,
-                solution: "function addOne(num) { return num + 1; }",
-                boilerplate: "function addOne(num) {\n    // Your code here\n}",
-                feedback: {
-                    wrongOutput: "Oops! Make sure you're adding 1 to the number, like 3 + 1 makes 4.",
-                    syntaxError: "There's a tiny mistake! Check if you forgot the + or wrote something extra.",
-                    wrongFunctionName: "Make sure your function is named `addOne` and takes a number."
-                },
-                hints: [
-                    "This is like getting one extra cookie! The function gets a number, like 3, and you need to add 1 to it to make 4.",
-                    "Use the `+` sign to add 1. Try writing `num + 1` inside your function to make the number bigger by 1.",
-                    "To give the answer back, use `return`. Write `return num + 1;` to add 1 to the number and share it."
-                ],
-                points: 100,
-                difficulty: "Easy",
-                category: "Basics"
-            },
-            {
-                title: "Say Hello",
-                description: "Make a function called `sayHello()` that says 'hello'. It’s like waving to a friend!",
-                testCases: [
-                    { input: [], expected: "hello" },
-                    { input: [], expected: "hello" },
-                    { input: [], expected: "hello" }
-                ],
-                timeLimit: 60,
-                solution: "function sayHello() { return 'hello'; }",
-                boilerplate: "function sayHello() {\n    // Your code here\n}",
-                feedback: {
-                    wrongOutput: "Oops! Make sure you're giving back the word 'hello' with no extra stuff.",
-                    syntaxError: "There's a small mistake! Check if you forgot the quotes around 'hello'.",
-                    wrongFunctionName: "Make sure your function is named `sayHello` and doesn't need any inputs."
-                },
-                hints: [
-                    "This is like saying hi to someone! The function just needs to give back the word 'hello'.",
-                    "Write 'hello' with quotes like `'hello'` to make it a word. Put that in your function!",
-                    "Use `return` to give the word back. Write `return 'hello';` to say 'hello' in your code."
-                ],
-                points: 100,
-                difficulty: "Easy",
-                category: "Basics"
-            },
-            {
-                title: "Take Away",
-                description: "Make a function called `takeAway(num)` that takes 1 away from a number. Like if you have 5 balloons, one pops, so you have 4.",
-                testCases: [
-                    { input: [5], expected: 4 },
-                    { input: [2], expected: 1 },
-                    { input: [1], expected: 0 }
-                ],
-                timeLimit: 60,
-                solution: "function takeAway(num) { return num - 1; }",
-                boilerplate: "function takeAway(num) {\n    // Your code here\n}",
-                feedback: {
-                    wrongOutput: "Oops! Make sure you're taking 1 away, like 5 - 1 makes 4.",
-                    syntaxError: "There's a tiny mistake! Check if you used - instead of something else.",
-                    wrongFunctionName: "Make sure your function is named `takeAway` and takes a number."
-                },
-                hints: [
-                    "Imagine you have balloons, like 5, and one pops. You want to know how many are left. This function takes a number and takes 1 away.",
-                    "Use the `-` sign to take away 1. Write `num - 1` in your function to make the number smaller by 1.",
-                    "To give the answer, use `return`. Write `return num - 1;` to take 1 away and share the new number."
-                ],
-                points: 100,
-                difficulty: "Easy",
-                category: "Basics"
-            },
-            {
-                title: "Is Five",
-                description: "Make a function called `isFive(num)` that checks if a number is 5. It’s like asking if you have exactly 5 toys!",
-                testCases: [
-                    { input: [5], expected: true },
-                    { input: [3], expected: false },
-                    { input: [6], expected: false }
-                ],
-                timeLimit: 60,
-                solution: "function isFive(num) { return num === 5; }",
-                boilerplate: "function isFive(num) {\n    // Your code here\n}",
-                feedback: {
-                    wrongOutput: "Hmm, check if you're testing if the number is exactly 5, like num === 5.",
-                    syntaxError: "There's a small mistake! Check if you used === or wrote something extra.",
-                    wrongFunctionName: "Make sure your function is named `isFive` and takes a number."
-                },
-                hints: [
-                    "This is like checking if you have exactly 5 toys. The function gets a number and says `true` if it’s 5, or `false` if it’s not.",
-                    "Use `===` to check if the number is 5. Write `num === 5` to see if the number matches 5 exactly.",
-                    "Use `return` to give the answer. Write `return num === 5;` to say `true` for 5 and `false` for other numbers."
-                ],
-                points: 100,
-                difficulty: "Easy",
-                category: "Basics"
-            },
-            {
-                title: "Bigger Than Three",
-                description: "Make a function called `biggerThanThree(num)` that checks if a number is bigger than 3. Like checking if you have more than 3 candies!",
-                testCases: [
-                    { input: [4], expected: true },
-                    { input: [3], expected: false },
-                    { input: [2], expected: false }
-                ],
-                timeLimit: 60,
-                solution: "function biggerThanThree(num) { return num > 3; }",
-                boilerplate: "function biggerThanThree(num) {\n    // Your code here\n}",
-                feedback: {
-                    wrongOutput: "Oops! Make sure you're checking if the number is bigger than 3, like 4 is bigger but 3 isn’t.",
-                    syntaxError: "There's a tiny mistake! Check if you used > or wrote something extra.",
-                    wrongFunctionName: "Make sure your function is named `biggerThanThree` and takes a number."
-                },
-                hints: [
-                    "Imagine you have candies and want to know if you have more than 3. This function checks if a number is bigger than 3 and says `true` or `false`.",
-                    "Use the `>` sign to check if a number is bigger than 3. Write `num > 3` to see if the number is more than 3.",
-                    "Use `return` to give the answer. Write `return num > 3;` to say `true` if the number is bigger than 3, or `false` if it’s not."
-                ],
-                points: 100,
-                difficulty: "Easy",
-                category: "Basics"
-            }
+    
+    {
+        title: "Cookie Count",
+        description: "Set a constant called `cookieCount` to 5 cookies. Like counting 5 cookies in a jar!",
+        testCases: [
+            { input: [], expected: 5 },
+            { input: [], expected: 5 },
+            { input: [], expected: 5 }
+        ],
+        timeLimit: 60,
+        solution: "const cookieCount = 5;",
+        boilerplate: "// Your code here",
+        feedback: {
+            wrongOutput: "Oops! Make sure you're setting cookieCount to 5, like counting 5 cookies.",
+            syntaxError: "There's a tiny mistake! Check if you used const and wrote 5.",
+            wrongFunctionName: "Make sure you're setting a constant named `cookieCount`, not a function."
+        },
+        hints: [
+            "This is like counting 5 cookies in a jar! You need to make a constant named `cookieCount` and set it to 5.",
+            "Use `const` to make a constant. Write `const cookieCount = 5;`.",
+            "Just write `const cookieCount = 5;` to set the number of cookies."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Add To Cookies",
+        description: "Make a function called `addToCookies(num)` that adds 1 to a constant number of cookies (5). Like if you have 5 cookies in a jar, add 1 to get 6!",
+        testCases: [
+            { input: [], expected: 6 },
+            { input: [], expected: 6 },
+            { input: [], expected: 6 }
+        ],
+        timeLimit: 60,
+        solution: "function addToCookies() { const cookies = 5; return cookies + 1; }",
+        boilerplate: "function addToCookies() {\n    // Your code here\n}",
+        feedback: {
+            wrongOutput: "Oops! Make sure you're adding 1 to 5 cookies to get 6.",
+            syntaxError: "There's a small mistake! Check if you used const and + correctly.",
+            wrongFunctionName: "Make sure your function is named `addToCookies` and takes no inputs."
+        },
+        hints: [
+            "This is like adding 1 cookie to a jar with 5 cookies! Use a constant for 5 and add 1 to it.",
+            "Make a constant like `const cookies = 5;` and add 1 with `cookies + 1`.",
+            "Write `function addToCookies() { const cookies = 5; return cookies + 1; }` to return 6."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "More Cookies",
+        description: "Set a variable called `totalCookies` to add extra cookies to 3 cookies. Like if you get 2 extra cookies, you have 5 total!",
+        testCases: [
+            { input: [2], expected: 5 },
+            { input: [1], expected: 4 },
+            { input: [3], expected: 6 }
+        ],
+        timeLimit: 60,
+        solution: "let totalCookies = 3 + extra;",
+        boilerplate: "let totalCookies = 3;\n// Your code here",
+        feedback: {
+            wrongOutput: "Oops! Make sure you're adding the extra cookies to 3, like 3 + 2 makes 5.",
+            syntaxError: "There's a tiny mistake! Check if you used + correctly with the extra number.",
+            wrongFunctionName: "Make sure you're setting `totalCookies`, not making a function."
+        },
+        hints: [
+            "This is like adding extra cookies to 3 cookies! Use a variable to add the extra amount to 3.",
+            "Use `let totalCookies = 3 + extra;` to add the extra cookies to 3.",
+            "Write `let totalCookies = 3 + extra;` to set the total number of cookies."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Eat Cookies",
+        description: "Make a function called `eatCookies(num)` that takes away cookies from 6 cookies. Like if you eat 2, you have 4 left!",
+        testCases: [
+            { input: [2], expected: 4 },
+            { input: [1], expected: 5 },
+            { input: [3], expected: 3 }
+        ],
+        timeLimit: 60,
+        solution: "function eatCookies(num) { const cookies = 6; return cookies - num; }",
+        boilerplate: "function eatCookies(num) {\n    // Your code here\n}",
+        feedback: {
+            wrongOutput: "Oops! Make sure you're taking away the number from 6 cookies, like 6 - 2 makes 4.",
+            syntaxError: "There's a small mistake! Check if you used - correctly.",
+            wrongFunctionName: "Make sure your function is named `eatCookies` and takes a number."
+        },
+        hints: [
+            "This is like eating cookies from a jar with 6! Use a constant for 6 and subtract the number you eat.",
+            "Make a constant like `const cookies = 6;` and subtract with `cookies - num`.",
+            "Write `function eatCookies(num) { const cookies = 6; return cookies - num; }` to return what's left."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Cookie Jar",
+        description: "Set a variable called `jarTotal` to add cookies to 3 and take some away. Like if you add 2 and take 1, you have 4 cookies!",
+        testCases: [
+            { input: [2, 1], expected: 4 },
+            { input: [3, 2], expected: 4 },
+            { input: [1, 1], expected: 3 }
+        ],
+        timeLimit: 60,
+        solution: "let jarTotal = 3 + add - take;",
+        boilerplate: "let jarTotal = 3;\n// Your code here",
+        feedback: {
+            wrongOutput: "Oops! Make sure you add the first number and subtract the second, like 3 + 2 - 1 makes 4.",
+            syntaxError: "There's a small mistake! Check if you used + and - correctly.",
+            wrongFunctionName: "Make sure you're setting `jarTotal`, not making a function."
+        },
+        hints: [
+            "This is like managing a cookie jar! Start with 3 cookies, add some, and take some away.",
+            "Use a variable and write `let jarTotal = 3 + add - take;` to do the math.",
+            "Write `let jarTotal = 3 + add - take;` to set the total cookies."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Cookie Check",
+        description: "Make a function called `cookieCheck(num)` that says 'Enough!' if you have 5 or more cookies, or 'Need more!' if less. Like 5 cookies says 'Enough!'!",
+        testCases: [
+            { input: [5], expected: "Enough!" },
+            { input: [4], expected: "Need more!" },
+            { input: [6], expected: "Enough!" }
+        ],
+        timeLimit: 60,
+        solution: "function cookieCheck(num) { if (num >= 5) return 'Enough!'; return 'Need more!'; }",
+        boilerplate: "function cookieCheck(num) {\n    // Your code here\n}",
+        feedback: {
+            wrongOutput: "Oops! Make sure you say 'Enough!' for 5 or more cookies, and 'Need more!' for less.",
+            syntaxError: "There's a small mistake! Check if you used >= and quotes correctly.",
+            wrongFunctionName: "Make sure your function is named `cookieCheck` and takes a number."
+        },
+        hints: [
+            "This is like checking if you have enough cookies! Say 'Enough!' if you have 5 or more, or 'Need more!' if less.",
+            "Use `if (num >= 5)` to check the number. Return `'Enough!'` or `'Need more!'`.",
+            "Write `if (num >= 5) return 'Enough!'; return 'Need more!';` to give the right message."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Cookie Label",
+        description: "Set a variable called `cookieLabel` to make a message with a constant word 'Cookies'. Like if you have 3 cookies, it’s '3 Cookies'.",
+        testCases: [
+            { input: [3], expected: "3 Cookies" },
+            { input: [0], expected: "0 Cookies" },
+            { input: [5], expected: "5 Cookies" }
+        ],
+        timeLimit: 60,
+        solution: "const word = 'Cookies'; let cookieLabel = num + ' ' + word;",
+        boilerplate: "const word = 'Cookies';\n// Your code here",
+        feedback: {
+            wrongOutput: "Oops! Make sure you combine the number and 'Cookies' with a space, like '3 Cookies'.",
+            syntaxError: "There's a small mistake! Check if you used + and quotes correctly.",
+            wrongFunctionName: "Make sure you're setting `cookieLabel`, not making a function."
+        },
+        hints: [
+            "This is like writing a label for your cookies! Use the constant 'Cookies' and add the number with a space.",
+            "Use the constant `word` and write `let cookieLabel = num + ' ' + word;`.",
+            "Write `const word = 'Cookies'; let cookieLabel = num + ' ' + word;` to make the message."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Enough For Party",
+        description: "Make a function called `enoughForParty(num)` that checks if you have more cookies than a constant number 4. Like 5 cookies is enough, so it says `true`!",
+        testCases: [
+            { input: [5], expected: true },
+            { input: [4], expected: false },
+            { input: [3], expected: false }
+        ],
+        timeLimit: 60,
+        solution: "function enoughForParty(num) { const limit = 4; return num > limit; }",
+        boilerplate: "function enoughForParty(num) {\n    // Your code here\n}",
+        feedback: {
+            wrongOutput: "Oops! Make sure you're checking if the number is more than 4, like 5 is more but 4 isn’t.",
+            syntaxError: "There's a tiny mistake! Check if you used > correctly.",
+            wrongFunctionName: "Make sure your function is named `enoughForParty` and takes a number."
+        },
+        hints: [
+            "This is like checking if you have enough cookies for a party! Use a constant 4 and see if you have more.",
+            "Make a constant like `const limit = 4;` and check with `num > limit`.",
+            "Write `function enoughForParty(num) { const limit = 4; return num > limit; }` to say `true` or `false`."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Add And Check Cookies",
+        description: "Set a variable called `cookieMessage` to add cookies to 3, check if it’s exactly a constant 5, and say 'Just right!' or 'Not right!'. Like 3 + 2 is 5, so it’s 'Just right!'!",
+        testCases: [
+            { input: [2], expected: "Just right!" },
+            { input: [1], expected: "Not right!" },
+            { input: [3], expected: "Not right!" }
+        ],
+        timeLimit: 60,
+        solution: "const target = 5; let cookieMessage = (3 + num === target) ? 'Just right!' : 'Not right!';",
+        boilerplate: "const target = 5;\n// Your code here",
+        feedback: {
+            wrongOutput: "Oops! Make sure you add the number to 3, check if it’s 5, and say 'Just right!' or 'Not right!'.",
+            syntaxError: "There's a small mistake! Check if you used + and === correctly.",
+            wrongFunctionName: "Make sure you're setting `cookieMessage`, not making a function."
+        },
+        hints: [
+            "This is like adding cookies and checking if you have exactly 5! Add to 3, compare to a constant 5, and set a message.",
+            "Use the constant `target` and write `let cookieMessage = (3 + num === target) ? 'Just right!' : 'Not right!';`.",
+            "Write `const target = 5; let cookieMessage = (3 + num === target) ? 'Just right!' : 'Not right!';` for the message."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    },
+    {
+        title: "Manage Cookie Jar",
+        description: "Make a function called `manageCookieJar(num, add, take)` that adds cookies, takes some away, checks if more than a constant 3, and makes a message. Like 2 + 3 - 1 is 4, so it says '4 Cookies are enough!'.",
+        testCases: [
+            { input: [2, 3, 1], expected: "4 Cookies are enough!" },
+            { input: [1, 2, 1], expected: "2 Cookies need more!" },
+            { input: [3, 2, 3], expected: "2 Cookies need more!" }
+        ],
+        timeLimit: 60,
+        solution: "function manageCookieJar(num, add, take) { const limit = 3; const word = 'Cookies'; let total = num + add - take; if (total > limit) return total + ' ' + word + ' are enough!'; return total + ' ' + word + ' need more!'; }",
+        boilerplate: "function manageCookieJar(num, add, take) {\n    // Your code here\n}",
+        feedback: {
+            wrongOutput: "Oops! Make sure you add, take away, check if more than 3, and make the right message, like '4 Cookies are enough!'.",
+            syntaxError: "There's a small mistake! Check if you used +, -, >, and quotes correctly.",
+            wrongFunctionName: "Make sure your function is named `manageCookieJar` and takes three numbers."
+        },
+        hints: [
+            "This is like managing a cookie jar! Add cookies, take some away, check if more than 3, and make a message with 'Cookies'.",
+            "Use constants for 3 and 'Cookies', a variable for the total, and check with `total > limit`.",
+            "Write `const limit = 3; const word = 'Cookies'; let total = num + add - take; if (total > limit) return total + ' ' + word + ' are enough!'; return total + ' ' + word + ' need more!';`."
+        ],
+        points: 100,
+        difficulty: "Easy",
+        category: "Basics"
+    }
+
+
+
         ],
         python: [
             {
@@ -1022,8 +1151,6 @@ require(['vs/editor/editor.main'], function () {
     });
 
     document.getElementById("submitCode").addEventListener("click", verifyCode);
-    document.getElementById("validateCode").addEventListener("click", validateCode);
-    
     document.getElementById("nextChallenge").addEventListener("click", () => {
         const filteredChallenges = filterChallenges(document.getElementById("categorySelect").value);
         currentChallengeIndex = (currentChallengeIndex + 1) % filteredChallenges.length;

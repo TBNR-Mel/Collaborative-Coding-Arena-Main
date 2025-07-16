@@ -52,6 +52,7 @@ h1 {
 }
 
 .challenge-section {
+    display: flex;
     background-color: #fafafa;
     padding: 20px;
     border-radius: 8px;
@@ -63,11 +64,19 @@ h2 {
 }
 
 #editor {
-    width: 100%;
+    width: 50vw;
     height: 400px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 20px;
+}
+
+.challenge-details {
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .controls {
@@ -119,8 +128,9 @@ select, button {
 }
 
 .dimmed {
-    opacity: 0.5;
+    opacity: 0;
     cursor: not-allowed;
+    color : white;
 }
 
 .hint-section {
