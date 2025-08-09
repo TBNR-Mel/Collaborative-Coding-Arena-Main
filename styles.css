@@ -1,3 +1,4 @@
+/* Base Layout */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -23,6 +24,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 h1 {
@@ -53,9 +56,11 @@ h1 {
 
 .challenge-section {
     display: flex;
+    gap: 20px;
     background-color: #fafafa;
     padding: 20px;
     border-radius: 8px;
+    flex-wrap: wrap;
 }
 
 h2 {
@@ -64,7 +69,8 @@ h2 {
 }
 
 #editor {
-    width: 50vw;
+    flex: 1 1 48%;
+    min-width: 300px;
     height: 400px;
     border: 1px solid #ddd;
     border-radius: 4px;
@@ -72,7 +78,8 @@ h2 {
 }
 
 .challenge-details {
-    width: 100%;
+    flex: 1 1 48%;
+    min-width: 300px;
     padding: 20px;
     background-color: #fff;
     border-radius: 4px;
@@ -83,6 +90,7 @@ h2 {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 select, button {
@@ -97,6 +105,7 @@ select, button {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .action-btn {
@@ -205,4 +214,46 @@ select, button {
 
 .selector {
     color: #ff79c6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .challenge-section {
+        flex-direction: column;
+    }
+
+    #editor, .challenge-details {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls, .action-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    select, button, .action-btn, .hint-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    #editor {
+        height: 300px;
+    }
 }
